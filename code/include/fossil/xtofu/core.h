@@ -175,86 +175,72 @@ typedef struct {
 } ctofu_comparable;  // Struct to represent the comparable data type
 
 // =======================
-// CREATION AND DESTRUCTION
+// CREATE AND ERASE FUNCTIONS
 // =======================
+ctofu fscl_tofu_create(ctofu_type type);
+ctofu fscl_tofu_create_default(ctofu_type type);
+ctofu fscl_tofu_create_copy(ctofu_type type, const ctofu* source);
+ctofu fscl_tofu_create_move(ctofu_type type, ctofu* source);
 
-// Create a new ctofu instance with the specified type and value
-ctofu_error fscl_tofu_create(ctofu_type type, ctofu_data* value, ctofu** result);
-
-// Erase the memory allocated for a ctofu instance
-void fscl_tofu_erase(ctofu* value);
+ctofu_error fscl_tofu_erase(ctofu* value);
+ctofu_error fscl_tofu_erase_move(ctofu* value);
+ctofu_error fscl_tofu_erase_copy(ctofu* value);
 
 // =======================
-// ALGORITHM FUNCTIONS
+// SORTABLE ALGORITHM FUNCTIONS
 // =======================
+ctofu_sortable fscl_tofu_sort_insertion(ctofu* array, size_t num);
+ctofu_sortable fscl_tofu_sort_selection(ctofu* array, size_t num);
+ctofu_sortable fscl_tofu_sort_merge(ctofu* array, size_t num);
+ctofu_sortable fscl_tofu_sort_quick(ctofu* array, size_t num);
 
-// Sort an array of ctofu_sortable instances using the insertion sort algorithm
-ctofu_error fscl_tofu_sort_insertion(ctofu_sortable* array, size_t num);
+// =======================
+// SEARCHABLE ALGORITHM FUNCTIONS
+// =======================
+ctofu_searchable fscl_tofu_search_linear(ctofu* array, size_t num, ctofu* key, size_t* result);
+ctofu_searchable fscl_tofu_search_binary(ctofu* array, size_t num, ctofu* key, size_t* result);
+ctofu_searchable fscl_tofu_search_linear_first_occurrence(ctofu* array, size_t num, ctofu* key, size_t* result);
+ctofu_searchable fscl_tofu_search_linear_last_occurrence(ctofu* array, size_t num, ctofu* key, size_t* result);
+ctofu_searchable fscl_tofu_search_binary_first_occurrence(ctofu* array, size_t num, ctofu* key, size_t* result);
+ctofu_searchable fscl_tofu_search_binary_last_occurrence(ctofu* array, size_t num, ctofu* key, size_t* result);
 
-// Sort an array of ctofu_sortable instances using the selection sort algorithm
-ctofu_error fscl_tofu_sort_selection(ctofu_sortable* array, size_t num);
+// =======================
+// COMPARABLE ALGORITHM FUNCTIONS
+// =======================
+ctofu_comparable fscl_tofu_compare_equal(const ctofu* a, const ctofu* b, bool* result);
+ctofu_comparable fscl_tofu_compare_not_equal(const ctofu* a, const ctofu* b, bool* result);
+ctofu_comparable fscl_tofu_compare_less(const ctofu* a, const ctofu* b, bool* result);
+ctofu_comparable fscl_tofu_compare_less_equal(const ctofu* a, const ctofu* b, bool* result);
+ctofu_comparable fscl_tofu_compare_greater(const ctofu* a, const ctofu* b, bool* result);
+ctofu_comparable fscl_tofu_compare_greater_equal(const ctofu* a, const ctofu* b, bool* result);
 
-// Reverse the order of elements in an array of ctofu_sortable instances
-ctofu_error fscl_tofu_reverse(ctofu_sortable* array, size_t num);
-
-// Compare two ctofu_sortable instances and return the result
-ctofu_error fscl_tofu_compare(const ctofu_sortable* a, const ctofu_sortable* b, int* result);
-
-// Search for a key within an array of ctofu_searchable instances using linear search
-size_t fscl_tofu_search_linear(ctofu_searchable* array, size_t num, ctofu_searchable* key);
-
-// Search for a key within a sorted array of ctofu_searchable instances using binary search
-size_t fscl_tofu_search_binary(ctofu_searchable* array, size_t num, ctofu_searchable* key);
-
-// Sort an array of ctofu_comparable instances using the insertion sort algorithm
-ctofu_error fscl_tofu_sort_insertion_comparable(ctofu_comparable* array, size_t num);
-
-// Sort an array of ctofu_comparable instances using the selection sort algorithm
-ctofu_error fscl_tofu_sort_selection_comparable(ctofu_comparable* array, size_t num);
-
-// Search for a key within an array of ctofu_comparable instances using linear search
-size_t fscl_tofu_search_linear_comparable(ctofu_comparable* array, size_t num, ctofu_comparable* key);
-
-// Search for a key within a sorted array of ctofu_comparable instances using binary search
-size_t fscl_tofu_search_binary_comparable(ctofu_comparable* array, size_t num, ctofu_comparable* key);
-
-// Compare two ctofu_comparable instances and return the result
-ctofu_error fscl_tofu_compare_comparable(const ctofu_comparable* a, const ctofu_comparable* b, int* result);
+// =======================
+// ADDITIONAL ALGORITHM FUNCTIONS
+// =======================
+ctofu_error fscl_tofu_reverse(ctofu* array, size_t num);
+ctofu_error fscl_tofu_compare(const ctofu* a, const ctofu* b, int* result);
+ctofu_error fscl_tofu_shuffle(ctofu* array, size_t num);
+ctofu_error fscl_tofu_transform(ctofu* array, size_t num, void (*transformation)(ctofu*));
 
 // =======================
 // UTILITY FUNCTIONS
 // =======================
-
-// Copy the value of one ctofu instance to another
 ctofu_error fscl_tofu_value_copy(const ctofu* source, ctofu* dest);
-
-// Set the value of one ctofu instance based on another
-void fscl_tofu_value_setter(const ctofu* source, ctofu* dest);
-
-// Get the data of a ctofu instance
+ctofu_error fscl_tofu_value_setter(const ctofu* source, ctofu* dest);
 ctofu_data fscl_tofu_value_getter(const ctofu* current);
-
-// Get the type of a ctofu instance
 ctofu_type fscl_tofu_type_getter(const ctofu* current);
-
-// Check if a ctofu instance is not a nullptr (NULL)
-bool fscl_tofu_not_cnullptr(const ctofu* value);
-
-// Check if a ctofu instance is a nullptr (NULL)
-bool fscl_tofu_its_cnullptr(const ctofu* value);
+ctofu_time fscl_tofu_time_getter(const ctofu* current);
+ctofu_error fscl_tofu_not_cnullptr(const ctofu* value);
+ctofu_error fscl_tofu_its_cnullptr(const ctofu* value);
 
 // =======================
 // ITERATOR FUNCTIONS
 // =======================
-
-// Get an iterator pointing to a specific position in an array of ctofu instances
 ctofu_iterator fscl_tofu_iterator_at(ctofu* array, size_t num, size_t at);
-
-// Get an iterator pointing to the start of an array of ctofu instances
 ctofu_iterator fscl_tofu_iterator_start(ctofu* array, size_t num);
-
-// Get an iterator pointing to the end of an array of ctofu instances
 ctofu_iterator fscl_tofu_iterator_end(ctofu* array, size_t num);
+ctofu_iterator fscl_tofu_iterator_next(ctofu_iterator* iterator);
+ctofu_iterator fscl_tofu_iterator_previous(ctofu_iterator* iterator);
 
 #ifdef __cplusplus
 }
