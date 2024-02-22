@@ -174,6 +174,16 @@ typedef struct {
     ctofu* compound_b
 } ctofu_comparable;  // Struct to represent the comparable data type
 
+typedef struct {
+    ctofu* compounds;
+    size_t size;
+} ctofu_reversible; // Define a struct to represent the reversible data type
+
+typedef struct {
+    ctofu* compounds;
+    size_t size;
+} ctofu_shufflable; // Define a struct to represent the shufflable data type
+
 // =======================
 // CREATE AND ERASE FUNCTIONS
 // =======================
@@ -221,6 +231,20 @@ ctofu_error fscl_tofu_compare(const ctofu_comparable* a, const ctofu_comparable*
 ctofu_error fscl_tofu_reverse(ctofu* array, size_t num);
 ctofu_error fscl_tofu_shuffle(ctofu* array, size_t num);
 ctofu_error fscl_tofu_transform(ctofu* array, size_t num, void (*transformation)(ctofu*));
+
+// =======================
+// REVERSIBLE ALGORITHM FUNCTIONS
+// =======================
+ctofu_error fscl_tofu_reverse(ctofu_reversible* array, size_t num);
+ctofu_error fscl_tofu_reverse_full(ctofu_reversible* array);
+ctofu_error fscl_tofu_reverse_partial(ctofu_reversible* array, size_t start, size_t end);
+
+// =======================
+// SHUFFLABLE ALGORITHM FUNCTIONS
+// =======================
+ctofu_error fscl_tofu_shuffle(ctofu_shufflable* array, size_t num);
+ctofu_error fscl_tofu_shuffle_full(ctofu_shufflable* array);
+ctofu_error fscl_tofu_shuffle_partial(ctofu_shufflable* array, size_t start, size_t end);
 
 // =======================
 // UTILITY FUNCTIONS
