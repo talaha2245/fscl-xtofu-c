@@ -19,6 +19,8 @@ extern "C"
 #endif
 
 #include <stdbool.h>
+#include <stdint.h>
+#include <stddef.h>
 
 /**
     Once upon a time in a small village nestled between rolling green hills,
@@ -74,8 +76,6 @@ extern "C"
     power of sharing one's passion with the world.
 */
 
-#include <stddef.h>
-
 // Define error constants for tofu operations
 typedef enum {
     TOFU_SUCCESS        = 0,
@@ -87,8 +87,72 @@ typedef enum {
     TOFU_NOT_FOUND      = -6
 } ctofu_error;  // Error codes for tofu operations
 
+typedef struct {
+    uint64_t minutes;      /**< Minutes for benchmarking */
+    uint64_t seconds;      /**< Seconds for benchmarking */
+    uint64_t milliseconds; /**< Milliseconds for benchmarking */
+    uint64_t microseconds; /**< Microseconds for benchmarking */
+    void* data;            /**< Additional benchmark-related data */
+} ctofu_time;
+
+typedef union {
+    int int_type;
+    int8_t int8_type;
+    int16_t int16_type;
+    int32_t int32_type;
+    int64_t int64_type;
+    unsigned int uint_type;
+    uint8_t uint8_type;
+    uint16_t uint16_type;
+    uint32_t uint32_type;
+    uint64_t uint64_type;
+    uint8_t octal8_type;
+    uint16_t octal16_type;
+    uint32_t octal32_type;
+    uint64_t octal64_type;
+    uint8_t bitwise8_type;
+    uint16_t bitwise16_type;
+    uint32_t bitwise32_type;
+    uint64_t bitwise64_type;
+    uint8_t hex8_type;
+    uint16_t hex16_type;
+    uint32_t hex32_type;
+    uint64_t hex64_type;
+    double double_type;
+    float float_type;
+    char* string_type;
+    char char_type;
+    bool boolean_type;
+    struct {
+        struct ctofu* elements;
+        size_t size;
+    } array_type;
+} ctofu_data;
+
 typedef enum {
-    INTEGER_TYPE,
+    INT_TYPE,
+    INT8_TYPE,
+    INT16_TYPE,
+    INT32_TYPE,
+    INT64_TYPE,
+    UINT_TYPE,
+    UINT8_TYPE,
+    UINT16_TYPE,
+    UINT32_TYPE,
+    UINT64_TYPE,
+    OCTAL8_TYPE,
+    OCTAL16_TYPE,
+    OCTAL32_TYPE,
+    OCTAL64_TYPE,
+    BITWISE8_TYPE,
+    BITWISE16_TYPE,
+    BITWISE32_TYPE,
+    BITWISE64_TYPE,
+    HEX8_TYPE,
+    HEX16_TYPE,
+    HEX32_TYPE,
+    HEX64_TYPE,
+    FLOAT_TYPE,
     DOUBLE_TYPE,
     STRING_TYPE,
     CHAR_TYPE,
@@ -97,23 +161,12 @@ typedef enum {
     NULLPTR_TYPE,
     INVALID_TYPE,
     UNKNOWN_TYPE
-} ctofu_type;  // Enumerated types for various tofu data
-
-typedef union {
-    int integer_type;
-    double double_type;
-    char* string_type;
-    char char_type;
-    bool boolean_type;
-    struct {
-        struct ctofu* elements;
-        size_t size;
-    } array_type;
-} ctofu_data;  // Union to hold data of different types
+} ctofu_type;
 
 typedef struct {
     ctofu_type type;
     ctofu_data data;
+    ctofu_time time;
 } ctofu;  // Struct to represent the data and its type
 
 typedef struct {
@@ -123,20 +176,18 @@ typedef struct {
 } ctofu_iterator;  // Struct to represent the iterator
 
 typedef struct {
-    ctofu_type type;
-    ctofu_data data;
+    ctofu* compound;
     ctofu* key;
 } ctofu_searchable;  // Struct to represent the searchable data type
 
 typedef struct {
-    ctofu_type type;
-    ctofu_data data;
+    ctofu* compound;
     size_t index;
 } ctofu_sortable;  // Struct to represent the sortable data type
 
 typedef struct {
-    ctofu_type type;
-    ctofu_data data;
+    ctofu* compound_a;
+    ctofu* compound_b
 } ctofu_comparable;  // Struct to represent the comparable data type
 
 // =======================
