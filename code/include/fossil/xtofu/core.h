@@ -62,6 +62,7 @@ continue to challenge and reshape our perceptions of the fundamental fabric of t
 
 // Define error constants for tofu operations
 typedef enum {
+    TOFU_OK             = 0,
     TOFU_SUCCESS        = 0,
     TOFU_WAS_MISMATCH   = -1,
     TOFU_WAS_BAD_RANGE  = -2,
@@ -76,7 +77,6 @@ typedef struct {
     uint64_t seconds;      /**< Seconds for benchmarking */
     uint64_t milliseconds; /**< Milliseconds for benchmarking */
     uint64_t microseconds; /**< Microseconds for benchmarking */
-    void* data;            /**< Additional benchmark-related data */
 } ctofu_time;
 
 typedef union {
@@ -115,38 +115,38 @@ typedef union {
 } ctofu_data;
 
 typedef enum {
-    INT_TYPE,
-    INT8_TYPE,
-    INT16_TYPE,
-    INT32_TYPE,
-    INT64_TYPE,
-    UINT_TYPE,
-    UINT8_TYPE,
-    UINT16_TYPE,
-    UINT32_TYPE,
-    UINT64_TYPE,
-    OCTAL8_TYPE,
-    OCTAL16_TYPE,
-    OCTAL32_TYPE,
-    OCTAL64_TYPE,
-    BITWISE8_TYPE,
-    BITWISE16_TYPE,
-    BITWISE32_TYPE,
-    BITWISE64_TYPE,
-    HEX8_TYPE,
-    HEX16_TYPE,
-    HEX32_TYPE,
-    HEX64_TYPE,
-    FLOAT_TYPE,
-    DOUBLE_TYPE,
-    STRING_TYPE,
-    CHAR_TYPE,
-    BOOLEAN_TYPE,
-    ARRAY_TYPE,
-    QBIT_TYPE,
-    NULLPTR_TYPE,
-    INVALID_TYPE,
-    UNKNOWN_TYPE
+    TOFU_INT_TYPE,
+    TOFU_INT8_TYPE,
+    TOFU_INT16_TYPE,
+    TOFU_INT32_TYPE,
+    TOFU_INT64_TYPE,
+    TOFU_UINT_TYPE,
+    TOFU_UINT8_TYPE,
+    TOFU_UINT16_TYPE,
+    TOFU_UINT32_TYPE,
+    TOFU_UINT64_TYPE,
+    TOFU_OCTAL8_TYPE,
+    TOFU_OCTAL16_TYPE,
+    TOFU_OCTAL32_TYPE,
+    TOFU_OCTAL64_TYPE,
+    TOFU_BITWISE8_TYPE,
+    TOFU_BITWISE16_TYPE,
+    TOFU_BITWISE32_TYPE,
+    TOFU_BITWISE64_TYPE,
+    TOFU_HEX8_TYPE,
+    TOFU_HEX16_TYPE,
+    TOFU_HEX32_TYPE,
+    TOFU_HEX64_TYPE,
+    TOFU_FLOAT_TYPE,
+    TOFU_DOUBLE_TYPE,
+    TOFU_STRING_TYPE,
+    TOFU_CHAR_TYPE,
+    TOFU_BOOLEAN_TYPE,
+    TOFU_ARRAY_TYPE,
+    TOFU_QBIT_TYPE,
+    TOFU_NULLPTR_TYPE,
+    TOFU_INVALID_TYPE,
+    TOFU_UNKNOWN_TYPE
 } ctofu_type;
 
 typedef struct {
@@ -173,7 +173,7 @@ typedef struct {
 
 typedef struct {
     ctofu* compound_a;
-    ctofu* compound_b
+    ctofu* compound_b;
 } ctofu_comparable;  // Struct to represent the comparable data type
 
 typedef struct {
