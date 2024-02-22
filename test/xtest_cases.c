@@ -13,7 +13,7 @@ Description:
 #include <fossil/xtest.h>   // basic test tools
 #include <fossil/xassert.h> // extra asserts
 
-#include <fossil/module.h> // library under test
+#include <fossil/xtofu/core.h> // library under test
 
 //
 // XUNIT-DATA: test data for use in current project test cases
