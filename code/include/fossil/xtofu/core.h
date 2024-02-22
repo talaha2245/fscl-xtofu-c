@@ -189,36 +189,36 @@ ctofu_error fscl_tofu_erase_copy(ctofu* value);
 // =======================
 // SORTABLE ALGORITHM FUNCTIONS
 // =======================
-ctofu_sortable fscl_tofu_sort_insertion(ctofu* array, size_t num);
-ctofu_sortable fscl_tofu_sort_selection(ctofu* array, size_t num);
-ctofu_sortable fscl_tofu_sort_merge(ctofu* array, size_t num);
-ctofu_sortable fscl_tofu_sort_quick(ctofu* array, size_t num);
+ctofu_error fscl_tofu_sort_insertion(ctofu_sortable* array, size_t num);
+ctofu_error fscl_tofu_sort_selection(ctofu_sortable* array, size_t num);
+ctofu_error fscl_tofu_sort_merge(ctofu_sortable* array, size_t num);
+ctofu_error fscl_tofu_sort_quick(ctofu_sortable* array, size_t num);
 
 // =======================
 // SEARCHABLE ALGORITHM FUNCTIONS
 // =======================
-ctofu_searchable fscl_tofu_search_linear(ctofu* array, size_t num, ctofu* key, size_t* result);
-ctofu_searchable fscl_tofu_search_binary(ctofu* array, size_t num, ctofu* key, size_t* result);
-ctofu_searchable fscl_tofu_search_linear_first_occurrence(ctofu* array, size_t num, ctofu* key, size_t* result);
-ctofu_searchable fscl_tofu_search_linear_last_occurrence(ctofu* array, size_t num, ctofu* key, size_t* result);
-ctofu_searchable fscl_tofu_search_binary_first_occurrence(ctofu* array, size_t num, ctofu* key, size_t* result);
-ctofu_searchable fscl_tofu_search_binary_last_occurrence(ctofu* array, size_t num, ctofu* key, size_t* result);
+ctofu_error fscl_tofu_search_linear(ctofu_searchable* array, size_t num, ctofu* key, size_t* result);
+ctofu_error fscl_tofu_search_binary(ctofu_searchable* array, size_t num, ctofu* key, size_t* result);
+ctofu_error fscl_tofu_search_linear_first_occurrence(ctofu_searchable* array, size_t num, ctofu* key, size_t* result);
+ctofu_error fscl_tofu_search_linear_last_occurrence(ctofu_searchable* array, size_t num, ctofu* key, size_t* result);
+ctofu_error fscl_tofu_search_binary_first_occurrence(ctofu_searchable* array, size_t num, ctofu* key, size_t* result);
+ctofu_error fscl_tofu_search_binary_last_occurrence(ctofu_searchable* array, size_t num, ctofu* key, size_t* result);
 
 // =======================
 // COMPARABLE ALGORITHM FUNCTIONS
 // =======================
-ctofu_comparable fscl_tofu_compare_equal(const ctofu* a, const ctofu* b, bool* result);
-ctofu_comparable fscl_tofu_compare_not_equal(const ctofu* a, const ctofu* b, bool* result);
-ctofu_comparable fscl_tofu_compare_less(const ctofu* a, const ctofu* b, bool* result);
-ctofu_comparable fscl_tofu_compare_less_equal(const ctofu* a, const ctofu* b, bool* result);
-ctofu_comparable fscl_tofu_compare_greater(const ctofu* a, const ctofu* b, bool* result);
-ctofu_comparable fscl_tofu_compare_greater_equal(const ctofu* a, const ctofu* b, bool* result);
+ctofu_error fscl_tofu_compare_equal(const ctofu_comparable* a, const ctofu_comparable* b, bool* result);
+ctofu_error fscl_tofu_compare_not_equal(const ctofu_comparable* a, const ctofu_comparable* b, bool* result);
+ctofu_error fscl_tofu_compare_less(const ctofu_comparable* a, const ctofu_comparable* b, bool* result);
+ctofu_error fscl_tofu_compare_less_equal(const ctofu_comparable* a, const ctofu_comparable* b, bool* result);
+ctofu_error fscl_tofu_compare_greater(const ctofu_comparable* a, const ctofu_comparable* b, bool* result);
+ctofu_error fscl_tofu_compare_greater_equal(const ctofu_comparable* a, const ctofu_comparable* b, bool* result);
+ctofu_error fscl_tofu_compare(const ctofu_comparable* a, const ctofu_comparable* b, int* result);
 
 // =======================
 // ADDITIONAL ALGORITHM FUNCTIONS
 // =======================
 ctofu_error fscl_tofu_reverse(ctofu* array, size_t num);
-ctofu_error fscl_tofu_compare(const ctofu* a, const ctofu* b, int* result);
 ctofu_error fscl_tofu_shuffle(ctofu* array, size_t num);
 ctofu_error fscl_tofu_transform(ctofu* array, size_t num, void (*transformation)(ctofu*));
 
