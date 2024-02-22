@@ -106,6 +106,7 @@ typedef union {
     float float_type;
     char* string_type;
     char char_type;
+    uint64_t qbit_type;
     bool boolean_type;
     struct {
         struct ctofu* elements;
@@ -142,6 +143,7 @@ typedef enum {
     CHAR_TYPE,
     BOOLEAN_TYPE,
     ARRAY_TYPE,
+    QBIT_TYPE,
     NULLPTR_TYPE,
     INVALID_TYPE,
     UNKNOWN_TYPE
