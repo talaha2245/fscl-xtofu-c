@@ -62,15 +62,50 @@ continue to challenge and reshape our perceptions of the fundamental fabric of t
 
 // Define error constants for tofu operations
 typedef enum {
-    TOFU_OK             = 0,
-    TOFU_SUCCESS        = 0,
-    TOFU_WAS_MISMATCH   = -1,
-    TOFU_WAS_BAD_RANGE  = -2,
-    TOFU_WAS_NULLPTR    = -3,
-    TOFU_WAS_BAD_MALLOC = -4,
-    TOFU_WAS_UNKNOWN    = -5,
-    TOFU_NOT_FOUND      = -6
+    TOFU_OK               = 0,
+    TOFU_SUCCESS          = 0,
+    TOFU_ERROR_MISMATCH   = -1,
+    TOFU_ERROR_BAD_RANGE  = -2,
+    TOFU_ERROR_NULLPTR    = -3,
+    TOFU_ERROR_BAD_MALLOC = -4,
+    TOFU_ERROR_UNKNOWN    = -5,
+    TOFU_ERROR_NOT_FOUND  = -6
 } ctofu_error;  // Error codes for tofu operations
+
+typedef enum {
+    TOFU_INT_TYPE,
+    TOFU_INT8_TYPE,
+    TOFU_INT16_TYPE,
+    TOFU_INT32_TYPE,
+    TOFU_INT64_TYPE,
+    TOFU_UINT_TYPE,
+    TOFU_UINT8_TYPE,
+    TOFU_UINT16_TYPE,
+    TOFU_UINT32_TYPE,
+    TOFU_UINT64_TYPE,
+    TOFU_OCTAL8_TYPE,
+    TOFU_OCTAL16_TYPE,
+    TOFU_OCTAL32_TYPE,
+    TOFU_OCTAL64_TYPE,
+    TOFU_BITWISE8_TYPE,
+    TOFU_BITWISE16_TYPE,
+    TOFU_BITWISE32_TYPE,
+    TOFU_BITWISE64_TYPE,
+    TOFU_HEX8_TYPE,
+    TOFU_HEX16_TYPE,
+    TOFU_HEX32_TYPE,
+    TOFU_HEX64_TYPE,
+    TOFU_FLOAT_TYPE,
+    TOFU_DOUBLE_TYPE,
+    TOFU_STRING_TYPE,
+    TOFU_CHAR_TYPE,
+    TOFU_BOOLEAN_TYPE,
+    TOFU_ARRAY_TYPE,
+    TOFU_QBIT_TYPE,
+    TOFU_NULLPTR_TYPE,
+    TOFU_INVALID_TYPE,
+    TOFU_UNKNOWN_TYPE
+} ctofu_type;
 
 typedef struct {
     uint64_t minutes;      /**< Minutes for benchmarking */
@@ -113,41 +148,6 @@ typedef union {
         size_t size;
     } array_type;
 } ctofu_data;
-
-typedef enum {
-    TOFU_INT_TYPE,
-    TOFU_INT8_TYPE,
-    TOFU_INT16_TYPE,
-    TOFU_INT32_TYPE,
-    TOFU_INT64_TYPE,
-    TOFU_UINT_TYPE,
-    TOFU_UINT8_TYPE,
-    TOFU_UINT16_TYPE,
-    TOFU_UINT32_TYPE,
-    TOFU_UINT64_TYPE,
-    TOFU_OCTAL8_TYPE,
-    TOFU_OCTAL16_TYPE,
-    TOFU_OCTAL32_TYPE,
-    TOFU_OCTAL64_TYPE,
-    TOFU_BITWISE8_TYPE,
-    TOFU_BITWISE16_TYPE,
-    TOFU_BITWISE32_TYPE,
-    TOFU_BITWISE64_TYPE,
-    TOFU_HEX8_TYPE,
-    TOFU_HEX16_TYPE,
-    TOFU_HEX32_TYPE,
-    TOFU_HEX64_TYPE,
-    TOFU_FLOAT_TYPE,
-    TOFU_DOUBLE_TYPE,
-    TOFU_STRING_TYPE,
-    TOFU_CHAR_TYPE,
-    TOFU_BOOLEAN_TYPE,
-    TOFU_ARRAY_TYPE,
-    TOFU_QBIT_TYPE,
-    TOFU_NULLPTR_TYPE,
-    TOFU_INVALID_TYPE,
-    TOFU_UNKNOWN_TYPE
-} ctofu_type;
 
 typedef struct {
     ctofu_type type;
