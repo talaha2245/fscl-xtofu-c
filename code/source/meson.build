@@ -1,4 +1,4 @@
-code = files('core.c')
+code = files('xtofu.c')
 
 lib = static_library('fscl-xtofu-c',
     code,
