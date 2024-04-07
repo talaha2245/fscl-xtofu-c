@@ -5,15 +5,9 @@ on:
     paths:
       - "**.c"
       - "**.h"
-      - "**.txt"
-      - "**.build"
-  pull_request:
-    branches:
-      - "main"
-    paths:
-      - "**.c"
-      - "**.h"
-      - "**.txt"
+      - "**.cpp"
+      - "**.hpp"
+      - "**.py"
       - "**.build"
 
 permissions:
@@ -48,4 +42,4 @@ jobs:
         meson compile -C builddir
     - name: Test Project Code
       run: |
-        meson test -C builddir -v
+        meson test -C builddir -v --test-args='--ci'
