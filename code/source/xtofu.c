@@ -1485,7 +1485,7 @@ ctofu_data fscl_tofu_value_getter(ctofu* current) {
 ctofu_type fscl_tofu_type_getter(ctofu* current) {
     if (current == NULL) {
         // You might want to handle this case differently based on your requirements
-        return fscl_tofu_error(TOFU_WAS_MISMATCH);
+        return TOFU_UNKNOWN_TYPE;
     }
 
     return current->type;
