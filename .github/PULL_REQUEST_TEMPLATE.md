@@ -1,4 +1,4 @@
-# TSCL Project Pull Request
+# Fossil Logic Layer Pull Request
 
 ## Description
 <!-- Briefly describe the purpose and scope of this pull request. -->
@@ -6,14 +6,8 @@
 ## Changes
 <!-- List the changes introduced by this pull request. -->
 
-## Related Issues
-<!-- Mention any related issues that are being addressed or resolved by this pull request. -->
-
 ## Testing
 <!-- Describe the testing process or steps taken to ensure the changes work as expected. -->
-
-## Screenshots
-<!-- If applicable, provide screenshots or other media to visually represent the changes made. -->
 
 ## Checklist
 - [ ] Code follows the project's coding standards.
@@ -25,5 +19,3 @@
 
 ## License
 This project is licensed under the Mozilla Public License - see the [LICENSE](LICENSE) file for details.
-
-<!-- Add any additional information or context that might be helpful for reviewers. -->

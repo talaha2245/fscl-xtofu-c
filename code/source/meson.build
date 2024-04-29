@@ -1,6 +1,6 @@
 code = files('xtofu.c')
 
-lib = static_library('fscl-xtofu-c',
+lib = library('fscl-xtofu-c',
     code,
     include_directories: dir)
 
