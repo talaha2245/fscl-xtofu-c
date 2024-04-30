@@ -77,7 +77,7 @@ void out_element_function(ctofu* element) {
 // XUNIT TEST CASES
 //
 
-XTEST_CASE(test_create_and_erase) {
+XTEST(test_create_and_erase) {
     // Test creating and erasing "tofu" structures for each supported type
 
     // Integer types
@@ -222,7 +222,7 @@ XTEST_CASE(test_create_and_erase) {
     fscl_tofu_erase(qbit_tofu);
 }
 
-XTEST_CASE(test_create_array_all_types) {
+XTEST(test_create_array_all_types) {
     // Test creating and erasing for each supported type
 
     // Integer array type
@@ -381,7 +381,7 @@ XTEST_CASE(test_create_array_all_types) {
     // Add more test cases for other types as needed
 }
 
-XTEST_CASE(test_type_mismatch) {
+XTEST(test_type_mismatch) {
     // Create a "tofu" structure with one type
     ctofu* tofu = fscl_tofu_create(TOFU_INT_TYPE, NULL);
     TEST_ASSUME_NOT_CNULLPTR(tofu);
@@ -396,7 +396,7 @@ XTEST_CASE(test_type_mismatch) {
     fscl_tofu_erase(wrong_type);
 }
 
-XTEST_CASE(test_accumulate) {
+XTEST(test_accumulate) {
     // Create a "tofu" array with initial values
     ctofu* array = fscl_tofu_create_array(TOFU_INT_TYPE, 5, 5, 3, 8, 1, 7);
 
@@ -408,7 +408,7 @@ XTEST_CASE(test_accumulate) {
     fscl_tofu_erase_array(array);
 }
 
-XTEST_CASE(test_transform) {
+XTEST(test_transform) {
     // Create a "tofu" array with initial values
     ctofu* array = fscl_tofu_create_array(TOFU_INT_TYPE, 5, 5, 3, 8, 1, 7);
 
@@ -420,7 +420,7 @@ XTEST_CASE(test_transform) {
     fscl_tofu_erase_array(array);
 }
 
-XTEST_CASE(test_sort) {
+XTEST(test_sort) {
     // Create a "tofu" array with initial values
     ctofu* array = fscl_tofu_create_array(TOFU_INT_TYPE, 5, 5, 3, 8, 1, 7);
 
@@ -432,7 +432,7 @@ XTEST_CASE(test_sort) {
     fscl_tofu_erase_array(array);
 }
 
-XTEST_CASE(test_search) {
+XTEST(test_search) {
     // Create a "tofu" array with initial values
     ctofu* array = fscl_tofu_create_array(TOFU_INT_TYPE, 5, 5, 3, 8, 1, 7);
 
@@ -446,7 +446,7 @@ XTEST_CASE(test_search) {
     fscl_tofu_erase_array(array);
 }
 
-XTEST_CASE(test_filter) {
+XTEST(test_filter) {
     // Create a "tofu" array with initial values
     ctofu* array = fscl_tofu_create_array(TOFU_INT_TYPE, 5, 5, 3, 8, 1, 7);
 
@@ -458,7 +458,7 @@ XTEST_CASE(test_filter) {
     fscl_tofu_erase_array(array);
 }
 
-XTEST_CASE(test_reverse) {
+XTEST(test_reverse) {
     // Create a "tofu" array with initial values
     ctofu* array = fscl_tofu_create_array(TOFU_INT_TYPE, 5, 5, 3, 8, 1, 7);
 
@@ -470,7 +470,7 @@ XTEST_CASE(test_reverse) {
     fscl_tofu_erase_array(array);
 }
 
-XTEST_CASE(test_swap) {
+XTEST(test_swap) {
     // Create two "tofu" structures with initial values
     ctofu* tofu1 = fscl_tofu_create(TOFU_INT_TYPE, &(ctofu_data){.int_type = 5});
     ctofu* tofu2 = fscl_tofu_create(TOFU_INT_TYPE, &(ctofu_data){.int_type = 8});
@@ -484,7 +484,7 @@ XTEST_CASE(test_swap) {
     fscl_tofu_erase(tofu2);
 }
 
-XTEST_CASE(test_compare) {
+XTEST(test_compare) {
     // Create two "tofu" structures with initial values
     ctofu* tofu1 = fscl_tofu_create(TOFU_INT_TYPE, &(ctofu_data){.int_type = 5});
     ctofu* tofu2 = fscl_tofu_create(TOFU_INT_TYPE, &(ctofu_data){.int_type = 8});
@@ -498,7 +498,7 @@ XTEST_CASE(test_compare) {
     fscl_tofu_erase(tofu2);
 }
 
-XTEST_CASE(test_reduce) {
+XTEST(test_reduce) {
     // Create a "tofu" array with initial values
     ctofu* array = fscl_tofu_create_array(TOFU_INT_TYPE, 5, 5, 3, 8, 1, 7);
 
@@ -510,7 +510,7 @@ XTEST_CASE(test_reduce) {
     fscl_tofu_erase_array(array);
 }
 
-XTEST_CASE(test_shuffle) {
+XTEST(test_shuffle) {
     // Create a "tofu" array with initial values
     ctofu* array = fscl_tofu_create_array(TOFU_INT_TYPE, 5, 5, 3, 8, 1, 7);
 
@@ -522,7 +522,7 @@ XTEST_CASE(test_shuffle) {
     fscl_tofu_erase_array(array);
 }
 
-XTEST_CASE(test_for_each) {
+XTEST(test_for_each) {
     // Create a "tofu" array with initial values
     ctofu* array = fscl_tofu_create_array(TOFU_INT_TYPE, 5, 5, 3, 8, 1, 7);
 
@@ -534,7 +534,7 @@ XTEST_CASE(test_for_each) {
     fscl_tofu_erase_array(array);
 }
 
-XTEST_CASE(test_partition) {
+XTEST(test_partition) {
     // Create a "tofu" array with initial values
     ctofu* array = fscl_tofu_create_array(TOFU_INT_TYPE, 5, 5, 3, 8, 1, 7);
 
