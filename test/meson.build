@@ -3,6 +3,8 @@ if get_option('with_test').enabled()
         dependency('fscl-xtest-c')
     ]
 
+    run_command(['python', 'generate-runner.py'], check: true)
+
     test_src = ['xunit_runner.c']
     test_cubes = ['cases']
 
