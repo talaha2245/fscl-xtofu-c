@@ -13,11 +13,6 @@ Description:
 #ifndef FSCL_XTOFU_H
 #define FSCL_XTOFU_H
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 /**
  * @file tofu.h
  *
@@ -42,6 +37,7 @@ extern "C"
 #include <stdbool.h>
 #include <stdint.h>
 #include <stddef.h>
+#include "errors.h" // ToFu error handler
 
 /**
     In the realm of quantum physics, our understanding of space, time, reality, and the observable universe takes
@@ -91,33 +87,6 @@ extern "C"
  * organization of code and facilitating modular design.
  */
 typedef struct ctofu ctofu;
-
-/**
- * Enumerated error codes for tofu operations on data structures.
- */
-typedef enum {
-    TOFU_SUCCESS             = 0,   ///< Operation completed successfully.
-    TOFU_WAS_MISMATCH        = -1,  ///< Data mismatch error.
-    TOFU_WAS_BAD_RANGE       = -2,  ///< Out-of-range error.
-    TOFU_WAS_NULLPTR         = -3,  ///< Null pointer error.
-    TOFU_WAS_BAD_MALLOC      = -4,  ///< Memory allocation error.
-    TOFU_WAS_UNKNOWN         = -5,  ///< Unknown error.
-    TOFU_NOT_FOUND           = -6,  ///< Element not found error.
-    TOFU_INVALID_OPERATION   = -7,  ///< Invalid operation on the data structure error.
-    TOFU_DUPLICATE_ELEMENT   = -8,  ///< Attempt to insert a duplicate element error.
-    TOFU_OUT_OF_MEMORY       = -9,  ///< Insufficient memory to perform the operation error.
-    TOFU_EMPTY_STRUCTURE     = -10, ///< Operation not allowed on an empty structure error.
-    TOFU_STRUCTURE_FULL      = -11, ///< Structure has reached its maximum capacity error.
-    TOFU_STRUCTURE_OVERFLOW  = -12, ///< Overflow occurred while performing an operation error.
-    TOFU_STRUCTURE_UNDERFLOW = -13, ///< Underflow occurred while performing an operation error.
-    TOFU_STRUCTURE_NOT_EMPTY = -14, ///< Operation not allowed on a non-empty structure error.
-    TOFU_STRUCTURE_NOT_FULL  = -15, ///< Structure is not at maximum capacity error.
-    TOFU_STRUCTURE_EMPTY     = -16, ///< Operation not allowed on an empty structure error.
-    TOFU_STRUCTURE_NOT_FOUND = -17, ///< Element not found in the structure error.
-    TOFU_STRUCTURE_CORRUPTED = -18, ///< Data structure integrity compromised error.
-    TOFU_STRUCTURE_INVALID   = -19, ///< Invalid data structure type error.
-    TOFU_INVALID_ARGUMENT    = -20  ///< Invalid argument provided to the operation error.
-} ctofu_error;
 
 /**
  * Enumerated types for representing various data types in the "tofu" data structure.
@@ -226,6 +195,12 @@ typedef struct {
     ctofu* current_key;    ///< The current key element in the pair.
     ctofu* current_value;  ///< The current value element in the pair.
 } ctofu_pair;
+
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 // =======================
 // CREATE/ERASE FUNCTIONS

@@ -389,7 +389,7 @@ XTEST(test_type_mismatch) {
     // Try to apply an operation with a different type
     ctofu* wrong_type = fscl_tofu_create(TOFU_FLOAT_TYPE, NULL);
     ctofu_error result = fscl_tofu_compare(tofu, wrong_type);
-    TEST_ASSUME_EQUAL(TOFU_WAS_MISMATCH, result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_INVALID_OPERATION, result);
 
     // Clean up
     fscl_tofu_erase(tofu);
@@ -402,7 +402,7 @@ XTEST(test_accumulate) {
 
     // Test accumulate
     ctofu_error accumulate_result = fscl_tofu_accumulate(array);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, accumulate_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, accumulate_result);
 
     // Clean up
     fscl_tofu_erase_array(array);
@@ -414,7 +414,7 @@ XTEST(test_transform) {
 
     // Test transform
     ctofu_error transform_result = fscl_tofu_transform(array, square_transform_function);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, transform_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, transform_result);
 
     // Clean up
     fscl_tofu_erase_array(array);
@@ -426,7 +426,7 @@ XTEST(test_sort) {
 
     // Test sort
     ctofu_error sort_result = fscl_tofu_sort(array);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, sort_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, sort_result);
 
     // Clean up
     fscl_tofu_erase_array(array);
@@ -439,7 +439,7 @@ XTEST(test_search) {
     // Test search
     ctofu* key = fscl_tofu_create(TOFU_INT_TYPE, &(ctofu_data){.int_type = 8});
     ctofu_error search_result = fscl_tofu_search(array, key);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, search_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, search_result);
     fscl_tofu_erase(key);
 
     // Clean up
@@ -452,7 +452,7 @@ XTEST(test_filter) {
 
     // Test filter
     ctofu_error filter_result = fscl_tofu_filter(array, even_filter_function);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, filter_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, filter_result);
 
     // Clean up
     fscl_tofu_erase_array(array);
@@ -464,7 +464,7 @@ XTEST(test_reverse) {
 
     // Test reverse
     ctofu_error reverse_result = fscl_tofu_reverse(array);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, reverse_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, reverse_result);
 
     // Clean up
     fscl_tofu_erase_array(array);
@@ -477,7 +477,7 @@ XTEST(test_swap) {
 
     // Test swap
     ctofu_error swap_result = fscl_tofu_swap(tofu1, tofu2);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, swap_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, swap_result);
 
     // Clean up
     fscl_tofu_erase(tofu1);
@@ -491,7 +491,7 @@ XTEST(test_compare) {
 
     // Test compare
     ctofu_error compare_result = fscl_tofu_compare(tofu1, tofu2);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, compare_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, compare_result);
 
     // Clean up
     fscl_tofu_erase(tofu1);
@@ -504,7 +504,7 @@ XTEST(test_reduce) {
 
     // Test reduce
     ctofu_error reduce_result = fscl_tofu_reduce(array, sum_reduce_function);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, reduce_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, reduce_result);
 
     // Clean up
     fscl_tofu_erase_array(array);
@@ -516,7 +516,7 @@ XTEST(test_shuffle) {
 
     // Test shuffle
     ctofu_error shuffle_result = fscl_tofu_shuffle(array);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, shuffle_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, shuffle_result);
 
     // Clean up
     fscl_tofu_erase_array(array);
@@ -528,7 +528,7 @@ XTEST(test_for_each) {
 
     // Test for_each
     ctofu_error for_each_result = fscl_tofu_for_each(array, out_element_function);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, for_each_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, for_each_result);
 
     // Clean up
     fscl_tofu_erase_array(array);
@@ -541,7 +541,7 @@ XTEST(test_partition) {
     // Test partition
     ctofu* partitionedResults[2];
     ctofu_error partition_result = fscl_tofu_partition(array, even_partition_function, partitionedResults);
-    TEST_ASSUME_EQUAL(TOFU_SUCCESS, partition_result);
+    TEST_ASSUME_EQUAL(FSCL_TOFU_ERROR_OK, partition_result);
 
     // Clean up
     fscl_tofu_erase_array(array);
