@@ -590,7 +590,7 @@ void fscl_tofu_out(const ctofu value) {
             printf("%d", value.data.int_type);
             break;
         case TOFU_UINT_TYPE:
-            printf("%llu", (unsigned long long)value.data.uint_type);
+            printf("%ld", (long)value.data.uint_type);
             break;
         case TOFU_OCTAL_TYPE:
             printf("0%llo", (unsigned long long)value.data.octal_type);
@@ -602,7 +602,7 @@ void fscl_tofu_out(const ctofu value) {
             printf("0x%llx", (unsigned long long)value.data.hex_type);
             break;
         case TOFU_FIXED_TYPE:
-            printf("%lld.%lld", value.data.fixed_type, (value.data.fixed_type - (int)value.data.fixed_type) * 100);
+            printf("%ld.%ld", value.data.fixed_type, (value.data.fixed_type - (long int)value.data.fixed_type) * 100);
             break;
         case TOFU_FLOAT_TYPE:
             printf("%f", value.data.float_type);
