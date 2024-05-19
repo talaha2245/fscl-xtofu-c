@@ -33,15 +33,15 @@ Create a directory named subprojects in the root directory, next create a file n
    test('basic', exe)
    ```
 
-## Including the Demo and Running Tests
+## Configure Options
 
-To run tests, you can use the following options when configuring the build:
+You have options when configuring the build, each serving a different purpose:
 
-- **Running Tests**: Add `-Dwith_test=enabled` when configuring the build.
+- **Running Tests**: To enable running tests, use `-Dwith_test=enabled` when configuring the build.
 
 Example:
 
-```zsh
+```python
 meson setup builddir -Dwith_test=enabled
 ```
 
