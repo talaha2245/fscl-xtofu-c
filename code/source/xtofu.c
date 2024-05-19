@@ -32,32 +32,8 @@ ctofu* fscl_tofu_create(ctofu_type type, ctofu_data* value) {
         case TOFU_INT_TYPE:
             result->data.int_type = value->int_type;
             break;
-        case TOFU_INT8_TYPE:
-            result->data.int8_type = value->int8_type;
-            break;
-        case TOFU_INT16_TYPE:
-            result->data.int16_type = value->int16_type;
-            break;
-        case TOFU_INT32_TYPE:
-            result->data.int32_type = value->int32_type;
-            break;
-        case TOFU_INT64_TYPE:
-            result->data.int64_type = value->int64_type;
-            break;
         case TOFU_UINT_TYPE:
             result->data.uint_type = value->uint_type;
-            break;
-        case TOFU_UINT8_TYPE:
-            result->data.uint8_type = value->uint8_type;
-            break;
-        case TOFU_UINT16_TYPE:
-            result->data.uint16_type = value->uint16_type;
-            break;
-        case TOFU_UINT32_TYPE:
-            result->data.uint32_type = value->uint32_type;
-            break;
-        case TOFU_UINT64_TYPE:
-            result->data.uint64_type = value->uint64_type;
             break;
         case TOFU_FLOAT_TYPE:
             result->data.float_type = value->float_type;
@@ -65,41 +41,16 @@ ctofu* fscl_tofu_create(ctofu_type type, ctofu_data* value) {
         case TOFU_DOUBLE_TYPE:
             result->data.double_type = value->double_type;
             break;
-        case TOFU_OCTAL8_TYPE:
-            result->data.octal8_type = value->octal8_type;
+        case TOFU_OCTAL_TYPE:
+            result->data.octal_type = value->octal_type;
             break;
-        case TOFU_OCTAL16_TYPE:
-            result->data.octal16_type = value->octal16_type;
+        case TOFU_BITWISE_TYPE:
+            result->data.bitwise_type = value->bitwise_type;
+        case TOFU_HEX_TYPE:
+            result->data.hex_type = value->hex_type;
             break;
-        case TOFU_OCTAL32_TYPE:
-            result->data.octal32_type = value->octal32_type;
-            break;
-        case TOFU_OCTAL64_TYPE:
-            result->data.octal64_type = value->octal64_type;
-            break;
-        case TOFU_BITWISE8_TYPE:
-            result->data.bitwise8_type = value->bitwise8_type;
-            break;
-        case TOFU_BITWISE16_TYPE:
-            result->data.bitwise16_type = value->bitwise16_type;
-            break;
-        case TOFU_BITWISE32_TYPE:
-            result->data.bitwise32_type = value->bitwise32_type;
-            break;
-        case TOFU_BITWISE64_TYPE:
-            result->data.bitwise64_type = value->bitwise64_type;
-            break;
-        case TOFU_HEX8_TYPE:
-            result->data.hex8_type = value->hex8_type;
-            break;
-        case TOFU_HEX16_TYPE:
-            result->data.hex16_type = value->hex16_type;
-            break;
-        case TOFU_HEX32_TYPE:
-            result->data.hex32_type = value->hex32_type;
-            break;
-        case TOFU_HEX64_TYPE:
-            result->data.hex64_type = value->hex64_type;
+        case TOFU_FIXED_TYPE:
+            result->data.fixed_type = value->fixed_type;
             break;
         case TOFU_NULLPTR_TYPE:
             result->data.nullptr_type = value->nullptr_type;
@@ -168,68 +119,20 @@ ctofu* fscl_tofu_create_array(ctofu_type type, size_t size, ...) {
             case TOFU_INT_TYPE:
                 tofu_array->data.array_type.elements[i].data.int_type = va_arg(args, int);
                 break;
-            case TOFU_INT8_TYPE:
-                tofu_array->data.array_type.elements[i].data.int8_type = va_arg(args, int);
-                break;
-            case TOFU_INT16_TYPE:
-                tofu_array->data.array_type.elements[i].data.int16_type = va_arg(args, int);
-                break;
-            case TOFU_INT32_TYPE:
-                tofu_array->data.array_type.elements[i].data.int32_type = va_arg(args, int32_t);
-                break;
-            case TOFU_INT64_TYPE:
-                tofu_array->data.array_type.elements[i].data.int64_type = va_arg(args, int64_t);
-                break;
             case TOFU_UINT_TYPE:
                 tofu_array->data.array_type.elements[i].data.uint_type = va_arg(args, unsigned int);
                 break;
-            case TOFU_UINT8_TYPE:
-                tofu_array->data.array_type.elements[i].data.uint8_type = va_arg(args, unsigned int);
+            case TOFU_OCTAL_TYPE:
+                tofu_array->data.array_type.elements[i].data.octal_type = va_arg(args, uint64_t);
                 break;
-            case TOFU_UINT16_TYPE:
-                tofu_array->data.array_type.elements[i].data.uint16_type = va_arg(args, unsigned int);
+            case TOFU_BITWISE_TYPE:
+                tofu_array->data.array_type.elements[i].data.bitwise_type = va_arg(args, uint64_t);
                 break;
-            case TOFU_UINT32_TYPE:
-                tofu_array->data.array_type.elements[i].data.uint32_type = va_arg(args, uint32_t);
+            case TOFU_HEX_TYPE:
+                tofu_array->data.array_type.elements[i].data.hex_type = va_arg(args, uint64_t);
                 break;
-            case TOFU_UINT64_TYPE:
-                tofu_array->data.array_type.elements[i].data.uint64_type = va_arg(args, uint64_t);
-                break;
-            case TOFU_OCTAL8_TYPE:
-                tofu_array->data.array_type.elements[i].data.octal8_type = va_arg(args, uint32_t);
-                break;
-            case TOFU_OCTAL16_TYPE:
-                tofu_array->data.array_type.elements[i].data.octal16_type = va_arg(args, uint32_t);
-                break;
-            case TOFU_OCTAL32_TYPE:
-                tofu_array->data.array_type.elements[i].data.octal32_type = va_arg(args, uint32_t);
-                break;
-            case TOFU_OCTAL64_TYPE:
-                tofu_array->data.array_type.elements[i].data.octal64_type = va_arg(args, uint64_t);
-                break;
-            case TOFU_BITWISE8_TYPE:
-                tofu_array->data.array_type.elements[i].data.bitwise8_type = va_arg(args, uint32_t);
-                break;
-            case TOFU_BITWISE16_TYPE:
-                tofu_array->data.array_type.elements[i].data.bitwise16_type = va_arg(args, uint32_t);
-                break;
-            case TOFU_BITWISE32_TYPE:
-                tofu_array->data.array_type.elements[i].data.bitwise32_type = va_arg(args, uint32_t);
-                break;
-            case TOFU_BITWISE64_TYPE:
-                tofu_array->data.array_type.elements[i].data.bitwise64_type = va_arg(args, uint64_t);
-                break;
-            case TOFU_HEX8_TYPE:
-                tofu_array->data.array_type.elements[i].data.hex8_type = va_arg(args, uint32_t);
-                break;
-            case TOFU_HEX16_TYPE:
-                tofu_array->data.array_type.elements[i].data.hex16_type = va_arg(args, uint32_t);
-                break;
-            case TOFU_HEX32_TYPE:
-                tofu_array->data.array_type.elements[i].data.hex32_type = va_arg(args, uint32_t);
-                break;
-            case TOFU_HEX64_TYPE:
-                tofu_array->data.array_type.elements[i].data.hex64_type = va_arg(args, uint64_t);
+            case TOFU_FIXED_TYPE:
+                tofu_array->data.array_type.elements[i].data.fixed_type = va_arg(args, int64_t);
                 break;
             case TOFU_FLOAT_TYPE:
                 tofu_array->data.array_type.elements[i].data.float_type = va_arg(args, double);
@@ -277,7 +180,7 @@ ctofu* fscl_tofu_create_array(ctofu_type type, size_t size, ...) {
 
 ctofu_error fscl_tofu_erase_array(ctofu* array) {
     if (!array || array->type != TOFU_ARRAY_TYPE) {
-        return fscl_tofu_error(TOFU_WAS_BAD_RANGE); // Not an array
+        return fscl_tofu_error(FSCL_TOFU_ERROR_INDEX_OUT_OF_BOUNDS); // Not an array
     }
 
     free(array->data.array_type.elements);
@@ -285,16 +188,16 @@ ctofu_error fscl_tofu_erase_array(ctofu* array) {
     array->data.array_type.size = 0;
     array->type = TOFU_INVALID_TYPE;
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 ctofu_error fscl_tofu_erase(ctofu* value) {
     if (!value) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     free(value);
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 
@@ -303,21 +206,21 @@ ctofu_error fscl_tofu_erase(ctofu* value) {
 // =======================
 ctofu_error fscl_tofu_accumulate(ctofu* objects) {
     if (objects == NULL) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     if (objects->type != TOFU_ARRAY_TYPE) {
-        return TOFU_INVALID_OPERATION;
+        return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
     }
 
     size_t size = objects->data.array_type.size;
 
     if (size == 0) {
-        return TOFU_EMPTY_STRUCTURE;
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     if (objects->data.array_type.elements == NULL) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     ctofu_data result;
@@ -325,7 +228,7 @@ ctofu_error fscl_tofu_accumulate(ctofu* objects) {
 
     for (size_t i = 0; i < size; ++i) {
         if (objects->data.array_type.elements[i].type != TOFU_INT_TYPE) {
-            return TOFU_INVALID_OPERATION;
+            return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
         }
 
         ctofu_data currentData = fscl_tofu_value_getter(&objects->data.array_type.elements[i]);
@@ -338,7 +241,7 @@ ctofu_error fscl_tofu_accumulate(ctofu* objects) {
     ctofu* resultObject = fscl_tofu_create(TOFU_INT_TYPE, &result);
     
     if (resultObject == NULL) {
-        return fscl_tofu_error(TOFU_WAS_BAD_MALLOC);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_MEMORY_CORRUPTION);
     }
 
     // Erase the existing array and set the result object as its only element
@@ -346,31 +249,31 @@ ctofu_error fscl_tofu_accumulate(ctofu* objects) {
     objects->data.array_type.size = 1;
     objects->data.array_type.elements = resultObject;
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 ctofu_error fscl_tofu_transform(ctofu* objects, int (*transformFunc)(int)) {
     if (!fscl_tofu_not_cnullptr(objects)) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     if (fscl_tofu_type_getter(objects) != TOFU_ARRAY_TYPE) {
-        return TOFU_INVALID_OPERATION;
+        return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
     }
 
     size_t size = objects->data.array_type.size;
 
     if (size == 0) {
-        return TOFU_EMPTY_STRUCTURE;
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     if (objects->data.array_type.elements == NULL || transformFunc == NULL) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     for (size_t i = 0; i < size; ++i) {
         if (objects->data.array_type.elements[i].type != TOFU_INT_TYPE) {
-            return TOFU_INVALID_OPERATION;
+            return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
         }
 
         // Get the current ctofu element
@@ -383,22 +286,22 @@ ctofu_error fscl_tofu_transform(ctofu* objects, int (*transformFunc)(int)) {
         fscl_tofu_value_setter(&objects->data.array_type.elements[i], &currentData);
     }
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 ctofu_error fscl_tofu_sort(ctofu* objects) {
     if (!fscl_tofu_not_cnullptr(objects)) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     if (fscl_tofu_type_getter(objects) != TOFU_ARRAY_TYPE) {
-        return fscl_tofu_error(TOFU_WAS_MISMATCH);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
     }
 
     // Ensure that array elements have compatible types for sorting
     for (size_t i = 0; i < objects->data.array_type.size; ++i) {
-        if (fscl_tofu_type_getter(&objects->data.array_type.elements[i]) != TOFU_INT64_TYPE) {
-            return fscl_tofu_error(TOFU_WAS_MISMATCH);
+        if (fscl_tofu_type_getter(&objects->data.array_type.elements[i]) != TOFU_INT_TYPE) {
+            return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
         }
     }
 
@@ -408,7 +311,7 @@ ctofu_error fscl_tofu_sort(ctofu* objects) {
             ctofu_data current = fscl_tofu_value_getter(&objects->data.array_type.elements[j]);
             ctofu_data next = fscl_tofu_value_getter(&objects->data.array_type.elements[j + 1]);
 
-            if (current.int64_type > next.int64_type) {
+            if (current.int_type > next.int_type) {
                 // Swap elements if they are in the wrong order
                 ctofu_data temp = objects->data.array_type.elements[j].data;
                 objects->data.array_type.elements[j].data = objects->data.array_type.elements[j + 1].data;
@@ -417,16 +320,16 @@ ctofu_error fscl_tofu_sort(ctofu* objects) {
         }
     }
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 ctofu_error fscl_tofu_search(ctofu* objects, ctofu* key) {
     if (!fscl_tofu_not_cnullptr(objects) || !fscl_tofu_not_cnullptr(key)) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     if (fscl_tofu_type_getter(objects) != TOFU_ARRAY_TYPE) {
-        return fscl_tofu_error(TOFU_WAS_MISMATCH);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
     }
 
     ctofu_type keyType = fscl_tofu_type_getter(key);
@@ -434,27 +337,27 @@ ctofu_error fscl_tofu_search(ctofu* objects, ctofu* key) {
     // Ensure that array elements have compatible types for searching
     for (size_t i = 0; i < objects->data.array_type.size; ++i) {
         if (fscl_tofu_type_getter(&objects->data.array_type.elements[i]) != keyType) {
-            return fscl_tofu_error(TOFU_WAS_MISMATCH);
+            return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
         }
     }
 
     // Implement a simple linear search algorithm
     for (size_t i = 0; i < objects->data.array_type.size; ++i) {
-        if (fscl_tofu_compare(&objects->data.array_type.elements[i], key) == TOFU_SUCCESS) {
-            return fscl_tofu_error(TOFU_SUCCESS);  // Key found
+        if (fscl_tofu_compare(&objects->data.array_type.elements[i], key) == FSCL_TOFU_ERROR_OK) {
+            return fscl_tofu_error(FSCL_TOFU_ERROR_OK);  // Key found
         }
     }
 
-    return fscl_tofu_error(TOFU_NOT_FOUND);  // Key not found
+    return fscl_tofu_error(FSCL_TOFU_ERROR_TYPE_MISMATCH);  // Key not found
 }
 
 ctofu_error fscl_tofu_filter(ctofu* objects, bool (*filterFunc)(const ctofu_data*)) {
     if (!fscl_tofu_not_cnullptr(objects)) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     if (fscl_tofu_type_getter(objects) != TOFU_ARRAY_TYPE) {
-        return fscl_tofu_error(TOFU_WAS_MISMATCH);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
     }
 
     // Declare an array of ctofu_data to store the filtered elements
@@ -476,16 +379,16 @@ ctofu_error fscl_tofu_filter(ctofu* objects, bool (*filterFunc)(const ctofu_data
     objects = fscl_tofu_create(TOFU_ARRAY_TYPE, filteredArray);
     objects->data.array_type.size = filteredSize;
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 ctofu_error fscl_tofu_reverse(ctofu* objects) {
     if (!fscl_tofu_not_cnullptr(objects)) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     if (fscl_tofu_type_getter(objects) != TOFU_ARRAY_TYPE) {
-        return fscl_tofu_error(TOFU_WAS_UNKNOWN);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_UNKNOWN);
     }
 
     // Reverse the array elements
@@ -502,122 +405,90 @@ ctofu_error fscl_tofu_reverse(ctofu* objects) {
         --j;
     }
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 ctofu_error fscl_tofu_swap(ctofu* right, ctofu* left) {
     if (!right || !left) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     ctofu temp = *right;
     *right = *left;
     *left = temp;
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 ctofu_error fscl_tofu_compare(ctofu* right, ctofu* left) {
     if (!fscl_tofu_not_cnullptr(right) || !fscl_tofu_not_cnullptr(left)) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     if (fscl_tofu_type_getter(right) != fscl_tofu_type_getter(left)) {
-        return fscl_tofu_error(TOFU_WAS_MISMATCH);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
     }
 
     // Compare the data based on their types
     switch (fscl_tofu_type_getter(right)) {
         case TOFU_INT_TYPE:
-            return (right->data.int_type == left->data.int_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_INT8_TYPE:
-            return (right->data.int8_type == left->data.int8_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_INT16_TYPE:
-            return (right->data.int16_type == left->data.int16_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_INT32_TYPE:
-            return (right->data.int32_type == left->data.int32_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_INT64_TYPE:
-            return (right->data.int64_type == left->data.int64_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
+            return (right->data.int_type == left->data.int_type) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
         case TOFU_UINT_TYPE:
-            return (right->data.uint_type == left->data.uint_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_UINT8_TYPE:
-            return (right->data.uint8_type == left->data.uint8_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_UINT16_TYPE:
-            return (right->data.uint16_type == left->data.uint16_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_UINT32_TYPE:
-            return (right->data.uint32_type == left->data.uint32_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_UINT64_TYPE:
-            return (right->data.uint64_type == left->data.uint64_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_OCTAL8_TYPE:
-            return (right->data.octal8_type == left->data.octal8_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_OCTAL16_TYPE:
-            return (right->data.octal16_type == left->data.octal16_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_OCTAL32_TYPE:
-            return (right->data.octal32_type == left->data.octal32_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_OCTAL64_TYPE:
-            return (right->data.octal64_type == left->data.octal64_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_BITWISE8_TYPE:
-            return (right->data.bitwise8_type == left->data.bitwise8_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_BITWISE16_TYPE:
-            return (right->data.bitwise16_type == left->data.bitwise16_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_BITWISE32_TYPE:
-            return (right->data.bitwise32_type == left->data.bitwise32_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_BITWISE64_TYPE:
-            return (right->data.bitwise64_type == left->data.bitwise64_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_HEX8_TYPE:
-            return (right->data.hex8_type == left->data.hex8_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_HEX16_TYPE:
-            return (right->data.hex16_type == left->data.hex16_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_HEX32_TYPE:
-            return (right->data.hex32_type == left->data.hex32_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
-        case TOFU_HEX64_TYPE:
-            return (right->data.hex64_type == left->data.hex64_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
+            return (right->data.uint_type == left->data.uint_type) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
+        case TOFU_OCTAL_TYPE:
+            return (right->data.octal_type == left->data.octal_type) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
+        case TOFU_BITWISE_TYPE:
+            return (right->data.bitwise_type == left->data.bitwise_type) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
+        case TOFU_HEX_TYPE:
+            return (right->data.hex_type == left->data.hex_type) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
+        case TOFU_FIXED_TYPE:
+            return (right->data.fixed_type == left->data.fixed_type) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
         case TOFU_FLOAT_TYPE:
-            return (right->data.float_type == left->data.float_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
+            return (right->data.float_type == left->data.float_type) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
         case TOFU_DOUBLE_TYPE:
-            return (right->data.double_type == left->data.double_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
+            return (right->data.double_type == left->data.double_type) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
         case TOFU_STRING_TYPE:
-            return (strcmp(right->data.string_type, left->data.string_type) == 0) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
+            return (strcmp(right->data.string_type, left->data.string_type) == 0) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
         case TOFU_CHAR_TYPE:
-            return (right->data.char_type == left->data.char_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
+            return (right->data.char_type == left->data.char_type) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
         case TOFU_BOOLEAN_TYPE:
-            return (right->data.boolean_type == left->data.boolean_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
+            return (right->data.boolean_type == left->data.boolean_type) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
         case TOFU_NULLPTR_TYPE:
             // Comparison for null pointers (always equal)
-            return fscl_tofu_error(TOFU_SUCCESS);
+            return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
         case TOFU_ARRAY_TYPE:
             // Handle array type
             // You might want to implement specific logic for comparing array elements
             // For simplicity, I'll return TOFU_UNKNOWN_TYPE indicating unsupported comparison
             printf("Unsupported type (array) for value comparison\n");
-            return fscl_tofu_error(TOFU_WAS_UNKNOWN);
+            return fscl_tofu_error(FSCL_TOFU_ERROR_UNKNOWN);
 
         case TOFU_MAP_TYPE:
             // Handle map type
             // You might want to implement specific logic for comparing map elements
             // For simplicity, I'll return TOFU_UNKNOWN_TYPE indicating unsupported comparison
             printf("Unsupported type (map) for value comparison\n");
-            return fscl_tofu_error(TOFU_WAS_UNKNOWN);
+            return fscl_tofu_error(FSCL_TOFU_ERROR_UNKNOWN);
         case TOFU_QBIT_TYPE:
-            return (right->data.qbit_type == left->data.qbit_type) ? TOFU_SUCCESS : TOFU_WAS_MISMATCH;
+            return (right->data.qbit_type == left->data.qbit_type) ? FSCL_TOFU_ERROR_OK : FSCL_TOFU_ERROR_INVALID_OPERATION;
         default:
-            return fscl_tofu_error(TOFU_WAS_UNKNOWN);  // Unsupported data type for comparison
+            return fscl_tofu_error(FSCL_TOFU_ERROR_UNKNOWN);  // Unsupported data type for comparison
     }
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 ctofu_error fscl_tofu_reduce(ctofu* objects, ctofu (*reduceFunc)(const ctofu*, const ctofu*)) {
     if (!fscl_tofu_not_cnullptr(objects)) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     if (fscl_tofu_type_getter(objects) != TOFU_ARRAY_TYPE) {
-        return fscl_tofu_error(TOFU_WAS_UNKNOWN);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_UNKNOWN);
     }
 
     if (objects->data.array_type.size < 2) {
-        return fscl_tofu_error(TOFU_SUCCESS);  // No reduction needed for less than two elements
+        return fscl_tofu_error(FSCL_TOFU_ERROR_OK);  // No reduction needed for less than two elements
     }
 
     // Apply the reduce function iteratively
@@ -629,16 +500,16 @@ ctofu_error fscl_tofu_reduce(ctofu* objects, ctofu (*reduceFunc)(const ctofu*, c
     // Update the size after reduction
     objects->data.array_type.size = 1;
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 ctofu_error fscl_tofu_shuffle(ctofu* objects) {
     if (!fscl_tofu_not_cnullptr(objects)) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     if (fscl_tofu_type_getter(objects) != TOFU_ARRAY_TYPE) {
-        return fscl_tofu_error(TOFU_WAS_UNKNOWN);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_UNKNOWN);
     }
 
     size_t size = objects->data.array_type.size;
@@ -653,12 +524,12 @@ ctofu_error fscl_tofu_shuffle(ctofu* objects) {
         objects->data.array_type.elements[j].data = temp;
     }
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 ctofu_error fscl_tofu_for_each(ctofu* objects, void (*forEachFunc)(ctofu*)) {
     if (objects == NULL || forEachFunc == NULL) {
-        return fscl_tofu_error(TOFU_INVALID_ARGUMENT);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
     }
 
     size_t size = objects->data.array_type.size;
@@ -666,12 +537,12 @@ ctofu_error fscl_tofu_for_each(ctofu* objects, void (*forEachFunc)(ctofu*)) {
         forEachFunc(&objects->data.array_type.elements[i]);
     }
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 ctofu_error fscl_tofu_partition(ctofu* objects, bool (*partitionFunc)(const ctofu*), ctofu* partitionedResults[2]) {
     if (objects == NULL || partitionFunc == NULL || partitionedResults == NULL) {
-        return fscl_tofu_error(TOFU_INVALID_ARGUMENT);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_INVALID_OPERATION);
     }
 
     size_t size = objects->data.array_type.size;
@@ -690,7 +561,7 @@ ctofu_error fscl_tofu_partition(ctofu* objects, bool (*partitionFunc)(const ctof
 
     if (partitionedResults[0] == NULL || partitionedResults[1] == NULL) {
         // Handle memory allocation failure
-        return TOFU_OUT_OF_MEMORY;
+        return fscl_tofu_error(FSCL_TOFU_ERROR_BUFFER_OVERFLOW);
     }
 
     size_t indexPartition1 = 0;
@@ -706,7 +577,7 @@ ctofu_error fscl_tofu_partition(ctofu* objects, bool (*partitionFunc)(const ctof
         }
     }
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 // =======================
@@ -716,70 +587,22 @@ ctofu_error fscl_tofu_partition(ctofu* objects, bool (*partitionFunc)(const ctof
 void fscl_tofu_out(const ctofu value) {
     switch (value.type) {
         case TOFU_INT_TYPE:
-            printf("%d", value.data.int_type);
-            break;
-        case TOFU_INT8_TYPE:
-            printf("%d", (int)value.data.int8_type);
-            break;
-        case TOFU_INT16_TYPE:
-            printf("%d", (int)value.data.int16_type);
-            break;
-        case TOFU_INT32_TYPE:
-            printf("%d", value.data.int32_type);
-            break;
-        case TOFU_INT64_TYPE:
-            printf("%lld", (long long int)value.data.int64_type);
+            printf("%lld", (long long)value.data.int_type);
             break;
         case TOFU_UINT_TYPE:
-            printf("%u", value.data.uint_type);
+            printf("%ld", (unsigned long)value.data.uint_type);
             break;
-        case TOFU_UINT8_TYPE:
-            printf("%u", (unsigned int)value.data.uint8_type);
+        case TOFU_OCTAL_TYPE:
+            printf("0%llo", (unsigned long long)value.data.octal_type);
             break;
-        case TOFU_UINT16_TYPE:
-            printf("%u", (unsigned int)value.data.uint16_type);
+        case TOFU_BITWISE_TYPE:
+            printf("0x%llx", (unsigned long long)value.data.bitwise_type);
             break;
-        case TOFU_UINT32_TYPE:
-            printf("%u", value.data.uint32_type);
+        case TOFU_HEX_TYPE:
+            printf("0x%llx", (unsigned long long)value.data.hex_type);
             break;
-        case TOFU_UINT64_TYPE:
-            printf("%llu", (long long unsigned int)value.data.uint64_type);
-            break;
-        case TOFU_OCTAL8_TYPE:
-            printf("0%o", (unsigned int)value.data.octal8_type);
-            break;
-        case TOFU_OCTAL16_TYPE:
-            printf("0%o", (unsigned int)value.data.octal16_type);
-            break;
-        case TOFU_OCTAL32_TYPE:
-            printf("0%o", value.data.octal32_type);
-            break;
-        case TOFU_OCTAL64_TYPE:
-            printf("0%llo", (long long unsigned int)value.data.octal64_type);
-            break;
-        case TOFU_BITWISE8_TYPE:
-            printf("0x%x", (unsigned int)value.data.bitwise8_type);
-            break;
-        case TOFU_BITWISE16_TYPE:
-            printf("0x%x", (unsigned int)value.data.bitwise16_type);
-            break;
-        case TOFU_BITWISE32_TYPE:
-            printf("0x%x", value.data.bitwise32_type);
-            break;
-        case TOFU_BITWISE64_TYPE:
-            printf("0x%llx", (long long unsigned int)value.data.bitwise64_type);
-            break;
-        case TOFU_HEX8_TYPE:
-            printf("0x%x", (unsigned int)value.data.hex8_type);
-            break;
-        case TOFU_HEX16_TYPE:
-            printf("0x%x", (unsigned int)value.data.hex16_type);
-            break;
-        case TOFU_HEX32_TYPE:
-            printf("0x%x", value.data.hex32_type);
-            break;
-        case TOFU_HEX64_TYPE:
-            printf("0x%llx", (long long unsigned int)value.data.hex64_type);
+        case TOFU_FIXED_TYPE:
+            printf("%lld.%lld", (long long)value.data.fixed_type, (long long)(value.data.fixed_type - (long long)value.data.fixed_type) * 100);
             break;
         case TOFU_FLOAT_TYPE:
             printf("%f", value.data.float_type);
@@ -851,81 +674,13 @@ char* fscl_tofu_strdup(const char* source) {
 }
 
 ctofu_error fscl_tofu_error(ctofu_error error) {
-    switch (error) {
-        case TOFU_SUCCESS:
-            puts("Operation successful.");
-            break;
-        case TOFU_WAS_MISMATCH:
-            puts("Data mismatch error.");
-            break;
-        case TOFU_WAS_BAD_RANGE:
-            puts("Bad range error.");
-            break;
-        case TOFU_WAS_NULLPTR:
-            puts("Null pointer error.");
-            break;
-        case TOFU_WAS_BAD_MALLOC:
-            puts("Bad malloc error.");
-            break;
-        case TOFU_WAS_UNKNOWN:
-            puts("Unknown error.");
-            break;
-        case TOFU_NOT_FOUND:
-            puts("Not found error.");
-            break;
-        case TOFU_INVALID_OPERATION:
-            puts("Invalid operation on the data structure.");
-            break;
-        case TOFU_DUPLICATE_ELEMENT:
-            puts("Attempt to insert a duplicate element.");
-            break;
-        case TOFU_OUT_OF_MEMORY:
-            puts("Insufficient memory to perform the operation.");
-            break;
-        case TOFU_EMPTY_STRUCTURE:
-            puts("Operation not allowed on an empty structure.");
-            break;
-        case TOFU_STRUCTURE_FULL:
-            puts("Structure has reached its maximum capacity.");
-            break;
-        case TOFU_STRUCTURE_OVERFLOW:
-            puts("Overflow occurred while performing an operation.");
-            break;
-        case TOFU_STRUCTURE_UNDERFLOW:
-            puts("Underflow occurred while performing an operation.");
-            break;
-        case TOFU_STRUCTURE_NOT_EMPTY:
-            puts("Operation not allowed on a non-empty structure.");
-            break;
-        case TOFU_STRUCTURE_NOT_FULL:
-            puts("Structure is not at maximum capacity.");
-            break;
-        case TOFU_STRUCTURE_EMPTY:
-            puts("Operation not allowed on an empty structure.");
-            break;
-        case TOFU_STRUCTURE_NOT_FOUND:
-            puts("Element not found in the structure.");
-            break;
-        case TOFU_STRUCTURE_CORRUPTED:
-            puts("Data structure integrity compromised.");
-            break;
-        case TOFU_STRUCTURE_INVALID:
-            puts("Invalid data structure type.");
-            break;
-        case TOFU_INVALID_ARGUMENT:
-            puts("Invalid argument provided to the operation.");
-            break;
-        default:
-            puts("Unknown error code.");
-            break;
-    }
-
+    fscl_tofu_error_message(error);
     return error;
 }
 
 ctofu_error fscl_tofu_value_copy(const ctofu* source, ctofu* dest) {
     if (source == NULL || dest == NULL) {
-        return fscl_tofu_error(TOFU_WAS_NULLPTR);
+        return fscl_tofu_error(FSCL_TOFU_ERROR_NULL_POINTER);
     }
 
     dest->type = source->type;
@@ -935,88 +690,24 @@ ctofu_error fscl_tofu_value_copy(const ctofu* source, ctofu* dest) {
             dest->data.int_type = source->data.int_type;
             break;
 
-        case TOFU_INT8_TYPE:
-            dest->data.int8_type = source->data.int8_type;
-            break;
-
-        case TOFU_INT16_TYPE:
-            dest->data.int16_type = source->data.int16_type;
-            break;
-
-        case TOFU_INT32_TYPE:
-            dest->data.int32_type = source->data.int32_type;
-            break;
-
-        case TOFU_INT64_TYPE:
-            dest->data.int64_type = source->data.int64_type;
-            break;
-
         case TOFU_UINT_TYPE:
             dest->data.uint_type = source->data.uint_type;
             break;
 
-        case TOFU_UINT8_TYPE:
-            dest->data.uint8_type = source->data.uint8_type;
+        case TOFU_OCTAL_TYPE:
+            dest->data.octal_type = source->data.octal_type;
             break;
 
-        case TOFU_UINT16_TYPE:
-            dest->data.uint16_type = source->data.uint16_type;
+        case TOFU_BITWISE_TYPE:
+            dest->data.bitwise_type = source->data.bitwise_type;
             break;
 
-        case TOFU_UINT32_TYPE:
-            dest->data.uint32_type = source->data.uint32_type;
+        case TOFU_HEX_TYPE:
+            dest->data.hex_type = source->data.hex_type;
             break;
-
-        case TOFU_UINT64_TYPE:
-            dest->data.uint64_type = source->data.uint64_type;
-            break;
-
-        case TOFU_OCTAL8_TYPE:
-            dest->data.octal8_type = source->data.octal8_type;
-            break;
-
-        case TOFU_OCTAL16_TYPE:
-            dest->data.octal16_type = source->data.octal16_type;
-            break;
-
-        case TOFU_OCTAL32_TYPE:
-            dest->data.octal32_type = source->data.octal32_type;
-            break;
-
-        case TOFU_OCTAL64_TYPE:
-            dest->data.octal64_type = source->data.octal64_type;
-            break;
-
-        case TOFU_BITWISE8_TYPE:
-            dest->data.bitwise8_type = source->data.bitwise8_type;
-            break;
-
-        case TOFU_BITWISE16_TYPE:
-            dest->data.bitwise16_type = source->data.bitwise16_type;
-            break;
-
-        case TOFU_BITWISE32_TYPE:
-            dest->data.bitwise32_type = source->data.bitwise32_type;
-            break;
-
-        case TOFU_BITWISE64_TYPE:
-            dest->data.bitwise64_type = source->data.bitwise64_type;
-            break;
-
-        case TOFU_HEX8_TYPE:
-            dest->data.hex8_type = source->data.hex8_type;
-            break;
-
-        case TOFU_HEX16_TYPE:
-            dest->data.hex16_type = source->data.hex16_type;
-            break;
-
-        case TOFU_HEX32_TYPE:
-            dest->data.hex32_type = source->data.hex32_type;
-            break;
-
-        case TOFU_HEX64_TYPE:
-            dest->data.hex64_type = source->data.hex64_type;
+        
+        case TOFU_FIXED_TYPE:
+            dest->data.fixed_type = source->data.fixed_type;
             break;
 
         case TOFU_FLOAT_TYPE:
@@ -1046,13 +737,13 @@ ctofu_error fscl_tofu_value_copy(const ctofu* source, ctofu* dest) {
                 dest->data.array_type.elements = malloc(dest->data.array_type.size * sizeof(ctofu));
                 
                 if (dest->data.array_type.elements == NULL) {
-                    return fscl_tofu_error(TOFU_WAS_BAD_MALLOC); // Handle memory allocation failure
+                    return fscl_tofu_error(FSCL_TOFU_ERROR_MEMORY_CORRUPTION); // Handle memory allocation failure
                 }
 
                 // Copy each element
                 for (size_t i = 0; i < dest->data.array_type.size; ++i) {
                     ctofu_error copyResult = fscl_tofu_value_copy(&source->data.array_type.elements[i], &dest->data.array_type.elements[i]);
-                    if (copyResult != TOFU_SUCCESS) {
+                    if (copyResult != FSCL_TOFU_ERROR_OK) {
                         // Handle copy error
                         // Clean up allocated memory
                         for (size_t j = 0; j < i; ++j) {
@@ -1063,7 +754,7 @@ ctofu_error fscl_tofu_value_copy(const ctofu* source, ctofu* dest) {
                     }
                 }
             } else {
-                return fscl_tofu_error(TOFU_WAS_BAD_RANGE); // Array is empty or null
+                return fscl_tofu_error(FSCL_TOFU_ERROR_INDEX_OUT_OF_BOUNDS); // Array is empty or null
             }
             break;
         case TOFU_MAP_TYPE:
@@ -1077,13 +768,13 @@ ctofu_error fscl_tofu_value_copy(const ctofu* source, ctofu* dest) {
                 // Handle memory allocation failure
                 free(dest->data.map_type.key);
                 free(dest->data.map_type.value);
-                return fscl_tofu_error(TOFU_WAS_BAD_MALLOC);
+                return fscl_tofu_error(FSCL_TOFU_ERROR_MEMORY_CORRUPTION);
             }
 
             // Copy keys and values
             for (size_t i = 0; i < dest->data.map_type.size; ++i) {
                 ctofu_error copyResult = fscl_tofu_value_copy(&source->data.map_type.key[i], &dest->data.map_type.key[i]);
-                if (copyResult != TOFU_SUCCESS) {
+                if (copyResult != FSCL_TOFU_ERROR_OK) {
                     // Handle copy error
                     // Clean up allocated memory
                     for (size_t j = 0; j < i; ++j) {
@@ -1096,7 +787,7 @@ ctofu_error fscl_tofu_value_copy(const ctofu* source, ctofu* dest) {
                 }
 
                 copyResult = fscl_tofu_value_copy(&source->data.map_type.value[i], &dest->data.map_type.value[i]);
-                if (copyResult != TOFU_SUCCESS) {
+                if (copyResult != FSCL_TOFU_ERROR_OK) {
                     // Handle copy error
                     // Clean up allocated memory
                     for (size_t j = 0; j <= i; ++j) {
@@ -1121,10 +812,10 @@ ctofu_error fscl_tofu_value_copy(const ctofu* source, ctofu* dest) {
         default:
             // Handle unsupported types
             printf("Unsupported type for value copy\n");
-            return fscl_tofu_error(TOFU_WAS_UNKNOWN);
+            return fscl_tofu_error(FSCL_TOFU_ERROR_UNKNOWN);
     }
 
-    return fscl_tofu_error(TOFU_SUCCESS);
+    return fscl_tofu_error(FSCL_TOFU_ERROR_OK);
 }
 
 void fscl_tofu_value_erase(ctofu* value) {
@@ -1162,88 +853,24 @@ void fscl_tofu_value_setter(const ctofu* source, ctofu* dest) {
             dest->data.int_type = source->data.int_type;
             break;
 
-        case TOFU_INT8_TYPE:
-            dest->data.int8_type = source->data.int8_type;
-            break;
-
-        case TOFU_INT16_TYPE:
-            dest->data.int16_type = source->data.int16_type;
-            break;
-
-        case TOFU_INT32_TYPE:
-            dest->data.int32_type = source->data.int32_type;
-            break;
-
-        case TOFU_INT64_TYPE:
-            dest->data.int64_type = source->data.int64_type;
-            break;
-
         case TOFU_UINT_TYPE:
             dest->data.uint_type = source->data.uint_type;
             break;
 
-        case TOFU_UINT8_TYPE:
-            dest->data.uint8_type = source->data.uint8_type;
+        case TOFU_OCTAL_TYPE:
+            dest->data.octal_type = source->data.octal_type;
             break;
 
-        case TOFU_UINT16_TYPE:
-            dest->data.uint16_type = source->data.uint16_type;
+        case TOFU_BITWISE_TYPE:
+            dest->data.bitwise_type = source->data.bitwise_type;
             break;
 
-        case TOFU_UINT32_TYPE:
-            dest->data.uint32_type = source->data.uint32_type;
+        case TOFU_HEX_TYPE:
+            dest->data.hex_type = source->data.hex_type;
             break;
 
-        case TOFU_UINT64_TYPE:
-            dest->data.uint64_type = source->data.uint64_type;
-            break;
-
-        case TOFU_OCTAL8_TYPE:
-            dest->data.octal8_type = source->data.octal8_type;
-            break;
-
-        case TOFU_OCTAL16_TYPE:
-            dest->data.octal16_type = source->data.octal16_type;
-            break;
-
-        case TOFU_OCTAL32_TYPE:
-            dest->data.octal32_type = source->data.octal32_type;
-            break;
-
-        case TOFU_OCTAL64_TYPE:
-            dest->data.octal64_type = source->data.octal64_type;
-            break;
-
-        case TOFU_BITWISE8_TYPE:
-            dest->data.bitwise8_type = source->data.bitwise8_type;
-            break;
-
-        case TOFU_BITWISE16_TYPE:
-            dest->data.bitwise16_type = source->data.bitwise16_type;
-            break;
-
-        case TOFU_BITWISE32_TYPE:
-            dest->data.bitwise32_type = source->data.bitwise32_type;
-            break;
-
-        case TOFU_BITWISE64_TYPE:
-            dest->data.bitwise64_type = source->data.bitwise64_type;
-            break;
-
-        case TOFU_HEX8_TYPE:
-            dest->data.hex8_type = source->data.hex8_type;
-            break;
-
-        case TOFU_HEX16_TYPE:
-            dest->data.hex16_type = source->data.hex16_type;
-            break;
-
-        case TOFU_HEX32_TYPE:
-            dest->data.hex32_type = source->data.hex32_type;
-            break;
-
-        case TOFU_HEX64_TYPE:
-            dest->data.hex64_type = source->data.hex64_type;
+        case TOFU_FIXED_TYPE:
+            dest->data.fixed_type = source->data.fixed_type;
             break;
 
         case TOFU_FLOAT_TYPE:
@@ -1346,88 +973,24 @@ ctofu_data fscl_tofu_value_getter(ctofu* current) {
             result.int_type = current->data.int_type;
             break;
 
-        case TOFU_INT8_TYPE:
-            result.int8_type = current->data.int8_type;
-            break;
-
-        case TOFU_INT16_TYPE:
-            result.int16_type = current->data.int16_type;
-            break;
-
-        case TOFU_INT32_TYPE:
-            result.int32_type = current->data.int32_type;
-            break;
-
-        case TOFU_INT64_TYPE:
-            result.int64_type = current->data.int64_type;
-            break;
-
         case TOFU_UINT_TYPE:
             result.uint_type = current->data.uint_type;
             break;
 
-        case TOFU_UINT8_TYPE:
-            result.uint8_type = current->data.uint8_type;
+        case TOFU_OCTAL_TYPE:
+            result.octal_type = current->data.octal_type;
             break;
 
-        case TOFU_UINT16_TYPE:
-            result.uint16_type = current->data.uint16_type;
+        case TOFU_BITWISE_TYPE:
+            result.bitwise_type = current->data.bitwise_type;
             break;
 
-        case TOFU_UINT32_TYPE:
-            result.uint32_type = current->data.uint32_type;
+        case TOFU_HEX_TYPE:
+            result.hex_type = current->data.hex_type;
             break;
 
-        case TOFU_UINT64_TYPE:
-            result.uint64_type = current->data.uint64_type;
-            break;
-
-        case TOFU_OCTAL8_TYPE:
-            result.octal8_type = current->data.octal8_type;
-            break;
-
-        case TOFU_OCTAL16_TYPE:
-            result.octal16_type = current->data.octal16_type;
-            break;
-
-        case TOFU_OCTAL32_TYPE:
-            result.octal32_type = current->data.octal32_type;
-            break;
-
-        case TOFU_OCTAL64_TYPE:
-            result.octal64_type = current->data.octal64_type;
-            break;
-
-        case TOFU_BITWISE8_TYPE:
-            result.bitwise8_type = current->data.bitwise8_type;
-            break;
-
-        case TOFU_BITWISE16_TYPE:
-            result.bitwise16_type = current->data.bitwise16_type;
-            break;
-
-        case TOFU_BITWISE32_TYPE:
-            result.bitwise32_type = current->data.bitwise32_type;
-            break;
-
-        case TOFU_BITWISE64_TYPE:
-            result.bitwise64_type = current->data.bitwise64_type;
-            break;
-
-        case TOFU_HEX8_TYPE:
-            result.hex8_type = current->data.hex8_type;
-            break;
-
-        case TOFU_HEX16_TYPE:
-            result.hex16_type = current->data.hex16_type;
-            break;
-
-        case TOFU_HEX32_TYPE:
-            result.hex32_type = current->data.hex32_type;
-            break;
-
-        case TOFU_HEX64_TYPE:
-            result.hex64_type = current->data.hex64_type;
+        case TOFU_FIXED_TYPE:
+            result.fixed_type = current->data.fixed_type;
             break;
 
         case TOFU_FLOAT_TYPE:

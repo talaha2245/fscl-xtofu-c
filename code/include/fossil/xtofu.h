@@ -13,11 +13,6 @@ Description:
 #ifndef FSCL_XTOFU_H
 #define FSCL_XTOFU_H
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 /**
  * @file tofu.h
  *
@@ -42,6 +37,7 @@ extern "C"
 #include <stdbool.h>
 #include <stdint.h>
 #include <stddef.h>
+#include "errors.h" // ToFu error handler
 
 /**
     In the realm of quantum physics, our understanding of space, time, reality, and the observable universe takes
@@ -93,58 +89,15 @@ extern "C"
 typedef struct ctofu ctofu;
 
 /**
- * Enumerated error codes for tofu operations on data structures.
- */
-typedef enum {
-    TOFU_SUCCESS             = 0,   ///< Operation completed successfully.
-    TOFU_WAS_MISMATCH        = -1,  ///< Data mismatch error.
-    TOFU_WAS_BAD_RANGE       = -2,  ///< Out-of-range error.
-    TOFU_WAS_NULLPTR         = -3,  ///< Null pointer error.
-    TOFU_WAS_BAD_MALLOC      = -4,  ///< Memory allocation error.
-    TOFU_WAS_UNKNOWN         = -5,  ///< Unknown error.
-    TOFU_NOT_FOUND           = -6,  ///< Element not found error.
-    TOFU_INVALID_OPERATION   = -7,  ///< Invalid operation on the data structure error.
-    TOFU_DUPLICATE_ELEMENT   = -8,  ///< Attempt to insert a duplicate element error.
-    TOFU_OUT_OF_MEMORY       = -9,  ///< Insufficient memory to perform the operation error.
-    TOFU_EMPTY_STRUCTURE     = -10, ///< Operation not allowed on an empty structure error.
-    TOFU_STRUCTURE_FULL      = -11, ///< Structure has reached its maximum capacity error.
-    TOFU_STRUCTURE_OVERFLOW  = -12, ///< Overflow occurred while performing an operation error.
-    TOFU_STRUCTURE_UNDERFLOW = -13, ///< Underflow occurred while performing an operation error.
-    TOFU_STRUCTURE_NOT_EMPTY = -14, ///< Operation not allowed on a non-empty structure error.
-    TOFU_STRUCTURE_NOT_FULL  = -15, ///< Structure is not at maximum capacity error.
-    TOFU_STRUCTURE_EMPTY     = -16, ///< Operation not allowed on an empty structure error.
-    TOFU_STRUCTURE_NOT_FOUND = -17, ///< Element not found in the structure error.
-    TOFU_STRUCTURE_CORRUPTED = -18, ///< Data structure integrity compromised error.
-    TOFU_STRUCTURE_INVALID   = -19, ///< Invalid data structure type error.
-    TOFU_INVALID_ARGUMENT    = -20  ///< Invalid argument provided to the operation error.
-} ctofu_error;
-
-/**
  * Enumerated types for representing various data types in the "tofu" data structure.
  */
 typedef enum {
     TOFU_INT_TYPE,           ///< Integer type.
-    TOFU_INT8_TYPE,          ///< 8-bit integer type.
-    TOFU_INT16_TYPE,         ///< 16-bit integer type.
-    TOFU_INT32_TYPE,         ///< 32-bit integer type.
-    TOFU_INT64_TYPE,         ///< 64-bit integer type.
     TOFU_UINT_TYPE,          ///< Unsigned integer type.
-    TOFU_UINT8_TYPE,         ///< 8-bit unsigned integer type.
-    TOFU_UINT16_TYPE,        ///< 16-bit unsigned integer type.
-    TOFU_UINT32_TYPE,        ///< 32-bit unsigned integer type.
-    TOFU_UINT64_TYPE,        ///< 64-bit unsigned integer type.
-    TOFU_OCTAL8_TYPE,        ///< 8-bit octal type.
-    TOFU_OCTAL16_TYPE,       ///< 16-bit octal type.
-    TOFU_OCTAL32_TYPE,       ///< 32-bit octal type.
-    TOFU_OCTAL64_TYPE,       ///< 64-bit octal type.
-    TOFU_BITWISE8_TYPE,      ///< 8-bit bitwise type.
-    TOFU_BITWISE16_TYPE,     ///< 16-bit bitwise type.
-    TOFU_BITWISE32_TYPE,     ///< 32-bit bitwise type.
-    TOFU_BITWISE64_TYPE,     ///< 64-bit bitwise type.
-    TOFU_HEX8_TYPE,          ///< 8-bit hexadecimal type.
-    TOFU_HEX16_TYPE,         ///< 16-bit hexadecimal type.
-    TOFU_HEX32_TYPE,         ///< 32-bit hexadecimal type.
-    TOFU_HEX64_TYPE,         ///< 64-bit hexadecimal type.
+    TOFU_OCTAL_TYPE,         ///< Octal type.
+    TOFU_BITWISE_TYPE,       ///< Bitwise type.
+    TOFU_HEX_TYPE,           ///< Hexadecimal type.
+    TOFU_FIXED_TYPE,         ///< Fixed-point type.
     TOFU_FLOAT_TYPE,         ///< Floating-point type (float).
     TOFU_DOUBLE_TYPE,        ///< Floating-point type (double).
     TOFU_STRING_TYPE,        ///< String type.
@@ -162,28 +115,12 @@ typedef enum {
  * Union to hold data of different types in the "tofu" data structure.
  */
 typedef union {
-    int int_type;              ///< Integer type.
-    int8_t int8_type;          ///< 8-bit integer type.
-    int16_t int16_type;        ///< 16-bit integer type.
-    int32_t int32_type;        ///< 32-bit integer type.
-    int64_t int64_type;        ///< 64-bit integer type.
-    unsigned int uint_type;    ///< Unsigned integer type.
-    uint8_t uint8_type;        ///< 8-bit unsigned integer type.
-    uint16_t uint16_type;      ///< 16-bit unsigned integer type.
-    uint32_t uint32_type;      ///< 32-bit unsigned integer type.
-    uint64_t uint64_type;      ///< 64-bit unsigned integer type.
-    uint8_t octal8_type;       ///< 8-bit octal type.
-    uint16_t octal16_type;     ///< 16-bit octal type.
-    uint32_t octal32_type;     ///< 32-bit octal type.
-    uint64_t octal64_type;     ///< 64-bit octal type.
-    uint8_t bitwise8_type;     ///< 8-bit bitwise type.
-    uint16_t bitwise16_type;   ///< 16-bit bitwise type.
-    uint32_t bitwise32_type;   ///< 32-bit bitwise type.
-    uint64_t bitwise64_type;   ///< 64-bit bitwise type.
-    uint8_t hex8_type;         ///< 8-bit hexadecimal type.
-    uint16_t hex16_type;       ///< 16-bit hexadecimal type.
-    uint32_t hex32_type;       ///< 32-bit hexadecimal type.
-    uint64_t hex64_type;       ///< 64-bit hexadecimal type.
+    int64_t int_type;          ///< Integer type.
+    uint64_t uint_type;        ///< Unsigned integer type.
+    uint64_t octal_type;       ///< Octal type.
+    uint64_t bitwise_type;     ///< Bitwise type.
+    uint64_t hex_type;         ///< Hexadecimal type.
+    int64_t fixed_type;        ///< Fixed-point type.
     double double_type;        ///< Double precision floating-point type.
     float float_type;          ///< Single precision floating-point type.
     char* string_type;         ///< String type.
@@ -226,6 +163,12 @@ typedef struct {
     ctofu* current_key;    ///< The current key element in the pair.
     ctofu* current_value;  ///< The current value element in the pair.
 } ctofu_pair;
+
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
 // =======================
 // CREATE/ERASE FUNCTIONS
