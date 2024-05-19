@@ -70,7 +70,7 @@ void out_element_function(ctofu* element) {
     }
 
     // Print the element
-    printf("%lld ", element->data.int_type);
+    printf("%lld ", (long long)element->data.int_type);
 }
 
 //
