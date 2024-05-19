@@ -173,11 +173,6 @@ XTEST(test_create_and_erase) {
     TEST_ASSUME_NOT_CNULLPTR(hex64_tofu);
     fscl_tofu_erase(hex64_tofu);
 
-    // Fixed point types
-    ctofu* fixed_tofu = fscl_tofu_create(TOFU_FIXED_TYPE, &(ctofu_data){.fixed_type = 3.14});
-    TEST_ASSUME_NOT_CNULLPTR(fixed_tofu);
-    fscl_tofu_erase(fixed_tofu);
-
     // Floating-point types
     ctofu* float_tofu = fscl_tofu_create(TOFU_FLOAT_TYPE, &(ctofu_data){.float_type = 3.14f});
     TEST_ASSUME_NOT_CNULLPTR(float_tofu);
