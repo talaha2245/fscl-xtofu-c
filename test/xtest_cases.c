@@ -85,19 +85,19 @@ XTEST(test_create_and_erase) {
     TEST_ASSUME_NOT_CNULLPTR(int_tofu);
     fscl_tofu_erase(int_tofu);
 
-    ctofu* int8_tofu = fscl_tofu_create(TOFU_INT8_TYPE, &(ctofu_data){.int8_type = 8});
+    ctofu* int8_tofu = fscl_tofu_create(TOFU_INT_TYPE, &(ctofu_data){.int_type = 8});
     TEST_ASSUME_NOT_CNULLPTR(int8_tofu);
     fscl_tofu_erase(int8_tofu);
 
-    ctofu* int16_tofu = fscl_tofu_create(TOFU_INT16_TYPE, &(ctofu_data){.int16_type = 16});
+    ctofu* int16_tofu = fscl_tofu_create(TOFU_INT_TYPE, &(ctofu_data){.int_type = 16});
     TEST_ASSUME_NOT_CNULLPTR(int16_tofu);
     fscl_tofu_erase(int16_tofu);
 
-    ctofu* int32_tofu = fscl_tofu_create(TOFU_INT32_TYPE, &(ctofu_data){.int32_type = 32});
+    ctofu* int32_tofu = fscl_tofu_create(TOFU_INT_TYPE, &(ctofu_data){.int_type = 32});
     TEST_ASSUME_NOT_CNULLPTR(int32_tofu);
     fscl_tofu_erase(int32_tofu);
 
-    ctofu* int64_tofu = fscl_tofu_create(TOFU_INT64_TYPE, &(ctofu_data){.int64_type = 64});
+    ctofu* int64_tofu = fscl_tofu_create(TOFU_INT_TYPE, &(ctofu_data){.int_type = 64});
     TEST_ASSUME_NOT_CNULLPTR(int64_tofu);
     fscl_tofu_erase(int64_tofu);
 
@@ -106,72 +106,77 @@ XTEST(test_create_and_erase) {
     TEST_ASSUME_NOT_CNULLPTR(uint_tofu);
     fscl_tofu_erase(uint_tofu);
 
-    ctofu* uint8_tofu = fscl_tofu_create(TOFU_UINT8_TYPE, &(ctofu_data){.uint8_type = 8});
+    ctofu* uint8_tofu = fscl_tofu_create(TOFU_UINT_TYPE, &(ctofu_data){.uint_type = 8});
     TEST_ASSUME_NOT_CNULLPTR(uint8_tofu);
     fscl_tofu_erase(uint8_tofu);
 
-    ctofu* uint16_tofu = fscl_tofu_create(TOFU_UINT16_TYPE, &(ctofu_data){.uint16_type = 16});
+    ctofu* uint16_tofu = fscl_tofu_create(TOFU_UINT_TYPE, &(ctofu_data){.uint_type = 16});
     TEST_ASSUME_NOT_CNULLPTR(uint16_tofu);
     fscl_tofu_erase(uint16_tofu);
 
-    ctofu* uint32_tofu = fscl_tofu_create(TOFU_UINT32_TYPE, &(ctofu_data){.uint32_type = 32});
+    ctofu* uint32_tofu = fscl_tofu_create(TOFU_UINT_TYPE, &(ctofu_data){.uint_type = 32});
     TEST_ASSUME_NOT_CNULLPTR(uint32_tofu);
     fscl_tofu_erase(uint32_tofu);
 
-    ctofu* uint64_tofu = fscl_tofu_create(TOFU_UINT64_TYPE, &(ctofu_data){.uint64_type = 64});
+    ctofu* uint64_tofu = fscl_tofu_create(TOFU_UINT_TYPE, &(ctofu_data){.uint_type = 64});
     TEST_ASSUME_NOT_CNULLPTR(uint64_tofu);
     fscl_tofu_erase(uint64_tofu);
 
     // Octal types
-    ctofu* octal8_tofu = fscl_tofu_create(TOFU_OCTAL8_TYPE, &(ctofu_data){.octal8_type = 075});
+    ctofu* octal8_tofu = fscl_tofu_create(TOFU_OCTAL_TYPE, &(ctofu_data){.octal_type = 075});
     TEST_ASSUME_NOT_CNULLPTR(octal8_tofu);
     fscl_tofu_erase(octal8_tofu);
 
-    ctofu* octal16_tofu = fscl_tofu_create(TOFU_OCTAL16_TYPE, &(ctofu_data){.octal16_type = 017});
+    ctofu* octal16_tofu = fscl_tofu_create(TOFU_OCTAL_TYPE, &(ctofu_data){.octal_type = 017});
     TEST_ASSUME_NOT_CNULLPTR(octal16_tofu);
     fscl_tofu_erase(octal16_tofu);
 
-    ctofu* octal32_tofu = fscl_tofu_create(TOFU_OCTAL32_TYPE, &(ctofu_data){.octal32_type = 033});
+    ctofu* octal32_tofu = fscl_tofu_create(TOFU_OCTAL_TYPE, &(ctofu_data){.octal_type = 033});
     TEST_ASSUME_NOT_CNULLPTR(octal32_tofu);
     fscl_tofu_erase(octal32_tofu);
 
-    ctofu* octal64_tofu = fscl_tofu_create(TOFU_OCTAL64_TYPE, &(ctofu_data){.octal64_type = 070});
+    ctofu* octal64_tofu = fscl_tofu_create(TOFU_OCTAL_TYPE, &(ctofu_data){.octal_type = 070});
     TEST_ASSUME_NOT_CNULLPTR(octal64_tofu);
     fscl_tofu_erase(octal64_tofu);
 
     // Bitwise types
-    ctofu* bitwise8_tofu = fscl_tofu_create(TOFU_BITWISE8_TYPE, &(ctofu_data){.bitwise8_type = 0b1010});
+    ctofu* bitwise8_tofu = fscl_tofu_create(TOFU_BITWISE_TYPE, &(ctofu_data){.bitwise_type = 0b1010});
     TEST_ASSUME_NOT_CNULLPTR(bitwise8_tofu);
     fscl_tofu_erase(bitwise8_tofu);
 
-    ctofu* bitwise16_tofu = fscl_tofu_create(TOFU_BITWISE16_TYPE, &(ctofu_data){.bitwise16_type = 0b11001100});
+    ctofu* bitwise16_tofu = fscl_tofu_create(TOFU_BITWISE_TYPE, &(ctofu_data){.bitwise_type = 0b11001100});
     TEST_ASSUME_NOT_CNULLPTR(bitwise16_tofu);
     fscl_tofu_erase(bitwise16_tofu);
 
-    ctofu* bitwise32_tofu = fscl_tofu_create(TOFU_BITWISE32_TYPE, &(ctofu_data){.bitwise32_type = 0b111100001111});
+    ctofu* bitwise32_tofu = fscl_tofu_create(TOFU_BITWISE_TYPE, &(ctofu_data){.bitwise_type = 0b111100001111});
     TEST_ASSUME_NOT_CNULLPTR(bitwise32_tofu);
     fscl_tofu_erase(bitwise32_tofu);
 
-    ctofu* bitwise64_tofu = fscl_tofu_create(TOFU_BITWISE64_TYPE, &(ctofu_data){.bitwise64_type = 0b11110000111100001111000011110000});
+    ctofu* bitwise64_tofu = fscl_tofu_create(TOFU_BITWISE_TYPE, &(ctofu_data){.bitwise_type = 0b11110000111100001111000011110000});
     TEST_ASSUME_NOT_CNULLPTR(bitwise64_tofu);
     fscl_tofu_erase(bitwise64_tofu);
 
     // Hexadecimal types
-    ctofu* hex8_tofu = fscl_tofu_create(TOFU_HEX8_TYPE, &(ctofu_data){.hex8_type = 0xA});
+    ctofu* hex8_tofu = fscl_tofu_create(TOFU_HEX_TYPE, &(ctofu_data){.hex_type = 0xA});
     TEST_ASSUME_NOT_CNULLPTR(hex8_tofu);
     fscl_tofu_erase(hex8_tofu);
 
-    ctofu* hex16_tofu = fscl_tofu_create(TOFU_HEX16_TYPE, &(ctofu_data){.hex16_type = 0xABCD});
+    ctofu* hex16_tofu = fscl_tofu_create(TOFU_HEX_TYPE, &(ctofu_data){.hex_type = 0xABCD});
     TEST_ASSUME_NOT_CNULLPTR(hex16_tofu);
     fscl_tofu_erase(hex16_tofu);
 
-    ctofu* hex32_tofu = fscl_tofu_create(TOFU_HEX32_TYPE, &(ctofu_data){.hex32_type = 0x12345678});
+    ctofu* hex32_tofu = fscl_tofu_create(TOFU_HEX_TYPE, &(ctofu_data){.hex_type = 0x12345678});
     TEST_ASSUME_NOT_CNULLPTR(hex32_tofu);
     fscl_tofu_erase(hex32_tofu);
 
-    ctofu* hex64_tofu = fscl_tofu_create(TOFU_HEX64_TYPE, &(ctofu_data){.hex64_type = 0x123456789ABCDEF0});
+    ctofu* hex64_tofu = fscl_tofu_create(TOFU_HEX_TYPE, &(ctofu_data){.hex_type = 0x123456789ABCDEF0});
     TEST_ASSUME_NOT_CNULLPTR(hex64_tofu);
     fscl_tofu_erase(hex64_tofu);
+
+    // Fixed point types
+    ctofu* fixed_tofu = fscl_tofu_create(TOFU_FIXED_TYPE, &(ctofu_data){.fixed_type = 3.14});
+    TEST_ASSUME_NOT_CNULLPTR(fixed_tofu);
+    fscl_tofu_erase(fixed_tofu);
 
     // Floating-point types
     ctofu* float_tofu = fscl_tofu_create(TOFU_FLOAT_TYPE, &(ctofu_data){.float_type = 3.14f});
@@ -231,22 +236,22 @@ XTEST(test_create_array_all_types) {
     fscl_tofu_erase(int_array_tofu);
 
     // 8-bit Integer array type
-    ctofu* int8_array_tofu = fscl_tofu_create_array(TOFU_INT8_TYPE, 3, 8, 16, 32);
+    ctofu* int8_array_tofu = fscl_tofu_create_array(TOFU_INT_TYPE, 3, 8, 16, 32);
     TEST_ASSUME_NOT_CNULLPTR(int8_array_tofu);
     fscl_tofu_erase(int8_array_tofu);
 
     // 16-bit Integer array type
-    ctofu* int16_array_tofu = fscl_tofu_create_array(TOFU_INT16_TYPE, 3, 16, 32, 64);
+    ctofu* int16_array_tofu = fscl_tofu_create_array(TOFU_INT_TYPE, 3, 16, 32, 64);
     TEST_ASSUME_NOT_CNULLPTR(int16_array_tofu);
     fscl_tofu_erase(int16_array_tofu);
 
     // 32-bit Integer array type
-    ctofu* int32_array_tofu = fscl_tofu_create_array(TOFU_INT32_TYPE, 3, 32, 64, 128);
+    ctofu* int32_array_tofu = fscl_tofu_create_array(TOFU_INT_TYPE, 3, 32, 64, 128);
     TEST_ASSUME_NOT_CNULLPTR(int32_array_tofu);
     fscl_tofu_erase(int32_array_tofu);
 
     // 64-bit Integer array type
-    ctofu* int64_array_tofu = fscl_tofu_create_array(TOFU_INT64_TYPE, 3, 64, 128, 256);
+    ctofu* int64_array_tofu = fscl_tofu_create_array(TOFU_INT_TYPE, 3, 64, 128, 256);
     TEST_ASSUME_NOT_CNULLPTR(int64_array_tofu);
     fscl_tofu_erase(int64_array_tofu);
 
@@ -256,82 +261,82 @@ XTEST(test_create_array_all_types) {
     fscl_tofu_erase(uint_array_tofu);
 
     // 8-bit Unsigned Integer array type
-    ctofu* uint8_array_tofu = fscl_tofu_create_array(TOFU_UINT8_TYPE, 3, 8, 16, 32);
+    ctofu* uint8_array_tofu = fscl_tofu_create_array(TOFU_UINT_TYPE, 3, 8, 16, 32);
     TEST_ASSUME_NOT_CNULLPTR(uint8_array_tofu);
     fscl_tofu_erase(uint8_array_tofu);
 
     // 16-bit Unsigned Integer array type
-    ctofu* uint16_array_tofu = fscl_tofu_create_array(TOFU_UINT16_TYPE, 3, 16, 32, 64);
+    ctofu* uint16_array_tofu = fscl_tofu_create_array(TOFU_UINT_TYPE, 3, 16, 32, 64);
     TEST_ASSUME_NOT_CNULLPTR(uint16_array_tofu);
     fscl_tofu_erase(uint16_array_tofu);
 
     // 32-bit Unsigned Integer array type
-    ctofu* uint32_array_tofu = fscl_tofu_create_array(TOFU_UINT32_TYPE, 3, 32, 64, 128);
+    ctofu* uint32_array_tofu = fscl_tofu_create_array(TOFU_UINT_TYPE, 3, 32, 64, 128);
     TEST_ASSUME_NOT_CNULLPTR(uint32_array_tofu);
     fscl_tofu_erase(uint32_array_tofu);
 
     // 64-bit Unsigned Integer array type
-    ctofu* uint64_array_tofu = fscl_tofu_create_array(TOFU_UINT64_TYPE, 3, 64, 128, 256);
+    ctofu* uint64_array_tofu = fscl_tofu_create_array(TOFU_UINT_TYPE, 3, 64, 128, 256);
     TEST_ASSUME_NOT_CNULLPTR(uint64_array_tofu);
     fscl_tofu_erase(uint64_array_tofu);
 
     // Octal 8-bit array type
-    ctofu* octal8_array_tofu = fscl_tofu_create_array(TOFU_OCTAL8_TYPE, 3, 075, 064, 055);
+    ctofu* octal8_array_tofu = fscl_tofu_create_array(TOFU_OCTAL_TYPE, 3, 075, 064, 055);
     TEST_ASSUME_NOT_CNULLPTR(octal8_array_tofu);
     fscl_tofu_erase(octal8_array_tofu);
 
     // Octal 16-bit array type
-    ctofu* octal16_array_tofu = fscl_tofu_create_array(TOFU_OCTAL16_TYPE, 3, 0755, 0755, 0755);
+    ctofu* octal16_array_tofu = fscl_tofu_create_array(TOFU_OCTAL_TYPE, 3, 0755, 0755, 0755);
     TEST_ASSUME_NOT_CNULLPTR(octal16_array_tofu);
     fscl_tofu_erase(octal16_array_tofu);
 
     // Octal 32-bit array type
-    ctofu* octal32_array_tofu = fscl_tofu_create_array(TOFU_OCTAL32_TYPE, 3, 0755, 0755, 0755);
+    ctofu* octal32_array_tofu = fscl_tofu_create_array(TOFU_OCTAL_TYPE, 3, 0755, 0755, 0755);
     TEST_ASSUME_NOT_CNULLPTR(octal32_array_tofu);
     fscl_tofu_erase(octal32_array_tofu);
 
     // Octal 64-bit array type
-    ctofu* octal64_array_tofu = fscl_tofu_create_array(TOFU_OCTAL64_TYPE, 3, 0755, 0755, 0755);
+    ctofu* octal64_array_tofu = fscl_tofu_create_array(TOFU_OCTAL_TYPE, 3, 0755, 0755, 0755);
     TEST_ASSUME_NOT_CNULLPTR(octal64_array_tofu);
     fscl_tofu_erase(octal64_array_tofu);
 
     // Bitwise 8-bit array type
-    ctofu* bitwise8_array_tofu = fscl_tofu_create_array(TOFU_BITWISE8_TYPE, 3, 0b1010, 0b0101, 0b1100);
+    ctofu* bitwise8_array_tofu = fscl_tofu_create_array(TOFU_BITWISE_TYPE, 3, 0b1010, 0b0101, 0b1100);
     TEST_ASSUME_NOT_CNULLPTR(bitwise8_array_tofu);
     fscl_tofu_erase(bitwise8_array_tofu);
 
     // Bitwise 16-bit array type
-    ctofu* bitwise16_array_tofu = fscl_tofu_create_array(TOFU_BITWISE16_TYPE, 3, 0b10101010, 0b01010101, 0b11110000);
+    ctofu* bitwise16_array_tofu = fscl_tofu_create_array(TOFU_BITWISE_TYPE, 3, 0b10101010, 0b01010101, 0b11110000);
     TEST_ASSUME_NOT_CNULLPTR(bitwise16_array_tofu);
     fscl_tofu_erase(bitwise16_array_tofu);
 
     // Bitwise 32-bit array type
-    ctofu* bitwise32_array_tofu = fscl_tofu_create_array(TOFU_BITWISE32_TYPE, 3, 0b1010101010101010, 0b0101010101010101, 0b1111000011110000);
+    ctofu* bitwise32_array_tofu = fscl_tofu_create_array(TOFU_BITWISE_TYPE, 3, 0b1010101010101010, 0b0101010101010101, 0b1111000011110000);
     TEST_ASSUME_NOT_CNULLPTR(bitwise32_array_tofu);
     fscl_tofu_erase(bitwise32_array_tofu);
 
     // Bitwise 64-bit array type
-    ctofu* bitwise64_array_tofu = fscl_tofu_create_array(TOFU_BITWISE64_TYPE, 3, 0b10101010101010101010101010101010, 0b01010101010101010101010101010101, 0b11110000111100001111000011110000);
+    ctofu* bitwise64_array_tofu = fscl_tofu_create_array(TOFU_BITWISE_TYPE, 3, 0b10101010101010101010101010101010, 0b01010101010101010101010101010101, 0b11110000111100001111000011110000);
     TEST_ASSUME_NOT_CNULLPTR(bitwise64_array_tofu);
     fscl_tofu_erase(bitwise64_array_tofu);
 
     // Hexadecimal 8-bit array type
-    ctofu* hex8_array_tofu = fscl_tofu_create_array(TOFU_HEX8_TYPE, 3, 0x1F, 0x2A, 0x3C);
+    ctofu* hex8_array_tofu = fscl_tofu_create_array(TOFU_HEX_TYPE, 3, 0x1F, 0x2A, 0x3C);
     TEST_ASSUME_NOT_CNULLPTR(hex8_array_tofu);
     fscl_tofu_erase(hex8_array_tofu);
 
     // Hexadecimal 16-bit array type
-    ctofu* hex16_array_tofu = fscl_tofu_create_array(TOFU_HEX16_TYPE, 3, 0x1F2A, 0x2A3C, 0x3C1F);
+    ctofu* hex16_array_tofu = fscl_tofu_create_array(TOFU_HEX_TYPE, 3, 0x1F2A, 0x2A3C, 0x3C1F);
     TEST_ASSUME_NOT_CNULLPTR(hex16_array_tofu);
     fscl_tofu_erase(hex16_array_tofu);
 
     // Hexadecimal 32-bit array type
-    ctofu* hex32_array_tofu = fscl_tofu_create_array(TOFU_HEX32_TYPE, 3, 0x1F2A3C4D, 0x2A3C4D5E, 0x3C4D5E6F);
+    ctofu* hex32_array_tofu = fscl_tofu_create_array(TOFU_HEX_TYPE, 3, 0x1F2A3C4D, 0x2A3C4D5E, 0x3C4D5E6F);
     TEST_ASSUME_NOT_CNULLPTR(hex32_array_tofu);
     fscl_tofu_erase(hex32_array_tofu);
 
     // Hexadecimal 64-bit array type
-    ctofu* hex64_array_tofu = fscl_tofu_create_array(TOFU_HEX64_TYPE, 3, 0x1F2A3C4D5E6F7A8B, 0x2A3C4D5E6F7A8B9C, 0x3C4D5E6F7A8B9C0D);
+    ctofu* hex64_array_tofu = fscl_tofu_create_array(TOFU_HEX_TYPE, 3, 0x1F2A3C4D5E6F7A8B, 0x2A3C4D5E6F7A8B9C, 0x3C4D5E6F7A8B9C0D);
     TEST_ASSUME_NOT_CNULLPTR(hex64_array_tofu);
     fscl_tofu_erase(hex64_array_tofu);
 
@@ -378,7 +383,9 @@ XTEST(test_create_array_all_types) {
     ctofu* unknown_array_tofu = fscl_tofu_create_array(TOFU_UNKNOWN_TYPE, 3, NULL, NULL, NULL);
     TEST_ASSUME_CNULLPTR(unknown_array_tofu);
 
-    // Add more test cases for other types as needed
+    // Fixed point array type
+    ctofu* fixed_array_tofu = fscl_tofu_create_array(TOFU_FIXED_TYPE, 3, 3.14, 2.71, 1.618);
+    TEST_ASSUME_NOT_CNULLPTR(fixed_array_tofu);
 }
 
 XTEST(test_type_mismatch) {
@@ -551,7 +558,7 @@ XTEST(test_partition) {
 //
 // XUNIT-TEST RUNNER
 //
-XTEST_DEFINE_POOL(basic_group) {
+XTEST_DEFINE_POOL(tofu_type_group) {
     XTEST_RUN_UNIT(test_create_and_erase);
     XTEST_RUN_UNIT(test_create_array_all_types);
     XTEST_RUN_UNIT(test_type_mismatch);

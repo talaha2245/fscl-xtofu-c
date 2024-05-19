@@ -93,27 +93,11 @@ typedef struct ctofu ctofu;
  */
 typedef enum {
     TOFU_INT_TYPE,           ///< Integer type.
-    TOFU_INT8_TYPE,          ///< 8-bit integer type.
-    TOFU_INT16_TYPE,         ///< 16-bit integer type.
-    TOFU_INT32_TYPE,         ///< 32-bit integer type.
-    TOFU_INT64_TYPE,         ///< 64-bit integer type.
     TOFU_UINT_TYPE,          ///< Unsigned integer type.
-    TOFU_UINT8_TYPE,         ///< 8-bit unsigned integer type.
-    TOFU_UINT16_TYPE,        ///< 16-bit unsigned integer type.
-    TOFU_UINT32_TYPE,        ///< 32-bit unsigned integer type.
-    TOFU_UINT64_TYPE,        ///< 64-bit unsigned integer type.
-    TOFU_OCTAL8_TYPE,        ///< 8-bit octal type.
-    TOFU_OCTAL16_TYPE,       ///< 16-bit octal type.
-    TOFU_OCTAL32_TYPE,       ///< 32-bit octal type.
-    TOFU_OCTAL64_TYPE,       ///< 64-bit octal type.
-    TOFU_BITWISE8_TYPE,      ///< 8-bit bitwise type.
-    TOFU_BITWISE16_TYPE,     ///< 16-bit bitwise type.
-    TOFU_BITWISE32_TYPE,     ///< 32-bit bitwise type.
-    TOFU_BITWISE64_TYPE,     ///< 64-bit bitwise type.
-    TOFU_HEX8_TYPE,          ///< 8-bit hexadecimal type.
-    TOFU_HEX16_TYPE,         ///< 16-bit hexadecimal type.
-    TOFU_HEX32_TYPE,         ///< 32-bit hexadecimal type.
-    TOFU_HEX64_TYPE,         ///< 64-bit hexadecimal type.
+    TOFU_OCTAL_TYPE,         ///< Octal type.
+    TOFU_BITWISE_TYPE,       ///< Bitwise type.
+    TOFU_HEX_TYPE,           ///< Hexadecimal type.
+    TOFU_FIXED_TYPE,         ///< Fixed-point type.
     TOFU_FLOAT_TYPE,         ///< Floating-point type (float).
     TOFU_DOUBLE_TYPE,        ///< Floating-point type (double).
     TOFU_STRING_TYPE,        ///< String type.
@@ -131,28 +115,12 @@ typedef enum {
  * Union to hold data of different types in the "tofu" data structure.
  */
 typedef union {
-    int int_type;              ///< Integer type.
-    int8_t int8_type;          ///< 8-bit integer type.
-    int16_t int16_type;        ///< 16-bit integer type.
-    int32_t int32_type;        ///< 32-bit integer type.
-    int64_t int64_type;        ///< 64-bit integer type.
-    unsigned int uint_type;    ///< Unsigned integer type.
-    uint8_t uint8_type;        ///< 8-bit unsigned integer type.
-    uint16_t uint16_type;      ///< 16-bit unsigned integer type.
-    uint32_t uint32_type;      ///< 32-bit unsigned integer type.
-    uint64_t uint64_type;      ///< 64-bit unsigned integer type.
-    uint8_t octal8_type;       ///< 8-bit octal type.
-    uint16_t octal16_type;     ///< 16-bit octal type.
-    uint32_t octal32_type;     ///< 32-bit octal type.
-    uint64_t octal64_type;     ///< 64-bit octal type.
-    uint8_t bitwise8_type;     ///< 8-bit bitwise type.
-    uint16_t bitwise16_type;   ///< 16-bit bitwise type.
-    uint32_t bitwise32_type;   ///< 32-bit bitwise type.
-    uint64_t bitwise64_type;   ///< 64-bit bitwise type.
-    uint8_t hex8_type;         ///< 8-bit hexadecimal type.
-    uint16_t hex16_type;       ///< 16-bit hexadecimal type.
-    uint32_t hex32_type;       ///< 32-bit hexadecimal type.
-    uint64_t hex64_type;       ///< 64-bit hexadecimal type.
+    int64_t int_type;          ///< Integer type.
+    uint64_t uint_type;        ///< Unsigned integer type.
+    uint64_t octal_type;       ///< Octal type.
+    uint64_t bitwise_type;     ///< Bitwise type.
+    uint64_t hex_type;         ///< Hexadecimal type.
+    int64_t fixed_type;        ///< Fixed-point type.
     double double_type;        ///< Double precision floating-point type.
     float float_type;          ///< Single precision floating-point type.
     char* string_type;         ///< String type.
