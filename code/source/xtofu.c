@@ -587,10 +587,10 @@ ctofu_error fscl_tofu_partition(ctofu* objects, bool (*partitionFunc)(const ctof
 void fscl_tofu_out(const ctofu value) {
     switch (value.type) {
         case TOFU_INT_TYPE:
-            printf("%d", value.data.int_type);
+            printf("%d", (long)value.data.int_type);
             break;
         case TOFU_UINT_TYPE:
-            printf("%ld", (long)value.data.uint_type);
+            printf("%ld", (unsigned long)value.data.uint_type);
             break;
         case TOFU_OCTAL_TYPE:
             printf("0%llo", (unsigned long long)value.data.octal_type);
