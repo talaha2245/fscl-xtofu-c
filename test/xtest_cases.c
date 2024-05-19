@@ -15,6 +15,13 @@ Description:
 #include <fossil/xtest.h>   // basic test tools
 #include <fossil/xassume.h> // extra asserts
 
+// * * * * * * * * * * * * * * * * * * * * * * * *
+// * Fossil Logic Test Utilites
+// * * * * * * * * * * * * * * * * * * * * * * * *
+// Setup steps for things like test fixtures and
+// mock objects are set here.
+// * * * * * * * * * * * * * * * * * * * * * * * *
+
 // Helper functions for algorithms
 int square_transform_function(int value) {
     return value * value;
@@ -73,9 +80,13 @@ void out_element_function(ctofu* element) {
     printf("%lld ", (long long)element->data.int_type);
 }
 
-//
-// XUNIT TEST CASES
-//
+// * * * * * * * * * * * * * * * * * * * * * * * *
+// * Fossil Logic Test Cases
+// * * * * * * * * * * * * * * * * * * * * * * * *
+// The test cases below are provided as samples, inspired
+// by the Meson build system's approach of using test cases
+// as samples for library usage.
+// * * * * * * * * * * * * * * * * * * * * * * * *
 
 XTEST(test_create_and_erase) {
     // Test creating and erasing "tofu" structures for each supported type
@@ -549,10 +560,9 @@ XTEST(test_partition) {
     fscl_tofu_erase_array(array);
 }
 
-
-//
-// XUNIT-TEST RUNNER
-//
+// * * * * * * * * * * * * * * * * * * * * * * * *
+// * Fossil Logic Test Pool
+// * * * * * * * * * * * * * * * * * * * * * * * *
 XTEST_DEFINE_POOL(tofu_type_group) {
     XTEST_RUN_UNIT(test_create_and_erase);
     XTEST_RUN_UNIT(test_create_array_all_types);
