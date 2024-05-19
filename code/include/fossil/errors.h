@@ -13,11 +13,6 @@ Description:
 #ifndef FSCL_XTOFU_ERROR_H
 #define FSCL_XTOFU_ERROR_H
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 /**
  * Within the realm of scientific inquiry, the pursuit of knowledge is invariably accompanied by the specter
  * of error, a ubiquitous phenomenon that permeates the fabric of experimental endeavors and theoretical
@@ -94,6 +89,67 @@ typedef enum {
     FSCL_TOFU_ERROR_CUSTOM,
     FSCL_TOFU_ERROR_UNKNOWN
 } ctofu_error;
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+/**
+ * @brief Retrieves the error message associated with the given error code.
+ *
+ * @param error The error code.
+ * @return The error message.
+ */
+static inline const char* fscl_tofu_error_message(ctofu_error error) {
+    static const char* error_messages[] = {
+        "No error occurred.",
+        "Null pointer.",
+        "Type mismatch.",
+        "Integer overflow.",
+        "Integer underflow.",
+        "Float overflow.",
+        "Float underflow.",
+        "Invalid cast.",
+        "Division by zero.",
+        "Invalid operation.",
+        "Index out of bounds.",
+        "Memory corruption.",
+        "File corruption.",
+        "Buffer overflow.",
+        "Buffer underflow.",
+        "Network failure.",
+        "Timeout.",
+        "Format error.",
+        "SQL injection.",
+        "Cross-site scripting (XSS) attack.",
+        "Cross-site request forgery (CSRF) attack.",
+        "Buffer overflow (string manipulation).",
+        "Buffer overflow (format string vulnerability).",
+        "Buffer overflow (file operation).",
+        "Buffer overflow (network operation).",
+        "Buffer overflow (command execution).",
+        "Buffer overflow (environment variable manipulation).",
+        "Format string attack.",
+        "Cryptographic weakness.",
+        "Insecure randomness generation.",
+        "Insecure configuration.",
+        "Insecure deserialization.",
+        "Insecure file handling.",
+        "Insecure temporary file creation.",
+        "Insecure communication.",
+        "Insecure authentication.",
+        "Insecure access control.",
+        "Custom error.",
+        "Unknown error."
+    };
+    
+    if (error >= FSCL_TOFU_ERROR_OK && error <= FSCL_TOFU_ERROR_UNKNOWN) {
+        return error_messages[error];
+    } else {
+        return "Invalid error code.";
+    }
+}
 
 #ifdef __cplusplus
 }
