@@ -587,7 +587,7 @@ ctofu_error fscl_tofu_partition(ctofu* objects, bool (*partitionFunc)(const ctof
 void fscl_tofu_out(const ctofu value) {
     switch (value.type) {
         case TOFU_INT_TYPE:
-            printf("%d", (long long)value.data.int_type);
+            printf("%ld", (long long)value.data.int_type);
             break;
         case TOFU_UINT_TYPE:
             printf("%ld", (unsigned long)value.data.uint_type);
@@ -602,7 +602,7 @@ void fscl_tofu_out(const ctofu value) {
             printf("0x%llx", (unsigned long long)value.data.hex_type);
             break;
         case TOFU_FIXED_TYPE:
-            printf("%ld.%ld", (long long)value.data.fixed_type, (long long)(value.data.fixed_type - (long long)value.data.fixed_type) * 100);
+            printf("%lld.%lld", (long long)value.data.fixed_type, (long long)(value.data.fixed_type - (long long)value.data.fixed_type) * 100);
             break;
         case TOFU_FLOAT_TYPE:
             printf("%f", value.data.float_type);
